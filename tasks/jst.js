@@ -10,9 +10,6 @@
 module.exports = function(grunt) {
   "use strict";
 
-  var _ = require("underscore");
-  var helpers = require("grunt-contrib-lib").init(grunt);
-
   var jst = function(source, filepath, namespace, templateSettings) {
     try {
       return namespace + "['" + filepath + "'] = " + _.template(source, false, templateSettings).source + ";";
@@ -23,6 +20,9 @@ module.exports = function(grunt) {
   };
 
   grunt.registerMultiTask("jst", "Compile underscore templates to JST file", function() {
+
+    var _ = require("underscore");
+    var helpers = require("grunt-contrib-lib").init(grunt);
     var options = helpers.options(this, {namespace: "JST", templateSettings: {}});
 
     grunt.verbose.writeflags(options, "Options");
