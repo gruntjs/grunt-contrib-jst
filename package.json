@@ -1,6 +1,6 @@
 {
   "name": "grunt-contrib-jst",
-  "description": "Precompile Handlebars templates to JST file.",
+  "description": "Precompile Underscore templates to JST file.",
   "version": "0.2.1",
   "homepage": "https://github.com/gruntjs/grunt-contrib-jst",
   "author": {
