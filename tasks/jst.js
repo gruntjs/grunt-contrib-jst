@@ -14,51 +14,50 @@ module.exports = function(grunt) {
 
   var escapeQuote = function(name) { return name.replace("'","\\'"); };
 
-  var jst = function(source, filepath, namespace, templateSettings) {
-    try {
-      return namespace + "['" + escapeQuote(filepath) + "'] = " + _.template(source, false, templateSettings).source + ";";
-    } catch (e) {
-      grunt.log.error(e);
-      grunt.fail.warn("JST failed to compile.");
-    }
-  };
+  // filename conversion for templates
+  var defaultProcessName = function(name) { return name; };
 
   grunt.registerMultiTask("jst", "Compile underscore templates to JST file", function() {
 
     var helpers = require("grunt-contrib-lib").init(grunt);
     var options = helpers.options(this, {namespace: "JST", templateSettings: {}});
 
+    // assign filename transformation functions
+    var processName = options.processName || defaultProcessName;
+
     grunt.verbose.writeflags(options, "Options");
 
     // TODO: ditch this when grunt v0.4 is released
     this.files = this.files || helpers.normalizeMultiTaskFiles(this.data, this.target);
 
-    var srcFiles;
-    var taskOutput;
-    var sourceCode;
-    var sourceCompiled;
+    var compiled, srcFiles, src, filename;
+    var output = [];
+    var namespace = "this['" + options.namespace + "']";
 
-    var helperNamespace = "this['" + options.namespace + "']";
+    this.files.forEach(function(files) {
+      srcFiles = grunt.file.expandFiles(files.src);
+      srcFiles.forEach(function(file) {
+        src = grunt.file.read(file);
 
-    this.files.forEach(function(file) {
-      srcFiles = grunt.file.expandFiles(file.src);
+        try {
+          compiled = _.template(src, false, options.templateSettings).source;
+        } catch (e) {
+          grunt.log.error(e);
+          grunt.fail.warn("JST failed to compile.");
+        }
 
-      taskOutput = [];
-      taskOutput.push(helperNamespace + " = " + helperNamespace + " || {};");
-
-      srcFiles.forEach(function(srcFile) {
-        sourceCode = grunt.file.read(srcFile);
-
-        sourceCompiled = jst(sourceCode, srcFile, helperNamespace, options.templateSettings);
-
-        taskOutput.push(sourceCompiled);
+        filename = escapeQuote(processName(file));
+        output.push(namespace+"['"+filename+"'] = "+compiled+";");
       });
 
-      if (taskOutput.length > 0) {
-        grunt.file.write(file.dest, taskOutput.join("\n\n"));
-        grunt.log.writeln("File '" + file.dest + "' created.");
+      if(output.length > 0) {
+        output.unshift(namespace + " = " + namespace + " || {};");
+        grunt.file.write(files.dest, output.join("\n\n"));
+        grunt.log.writeln("File '" + files.dest + "' created.");
       }
     });
+
+
   });
 
 };

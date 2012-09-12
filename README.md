@@ -39,6 +39,18 @@ This controls how this task (and its helpers) operate and should contain key:val
 
 The namespace in which the resulting JST templates are assigned to.
 
+##### processName ```function```
+
+This option accepts a function which takes one argument (the template filepath) and returns a string which will be used as the key for the precompiled template object.  The example below stores all templates on the default JST namespace in capital letters.
+
+``` javascript
+options: {
+  processName: function(filename) {
+    return filename.toUpperCase();
+  }
+}
+```
+
 ##### templateSettings ```object```
 
 The settings passed to underscore when compiling templates.
