@@ -12,9 +12,11 @@ module.exports = function(grunt) {
 
   var _ = require("underscore");
 
+  var escapeQuote = function(name) { return name.replace("'","\\'"); };
+
   var jst = function(source, filepath, namespace, templateSettings) {
     try {
-      return namespace + "['" + filepath + "'] = " + _.template(source, false, templateSettings).source + ";";
+      return namespace + "['" + escapeQuote(filepath) + "'] = " + _.template(source, false, templateSettings).source + ";";
     } catch (e) {
       grunt.log.error(e);
       grunt.fail.warn("JST failed to compile.");

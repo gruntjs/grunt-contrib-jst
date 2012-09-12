@@ -44,6 +44,11 @@ module.exports = function(grunt) {
         files: {
           "tmp/jst.js": ["test/fixtures/*.html"]
         }
+      },
+      uglyfile: {
+        files: {
+          "tmp/uglyfile.js": ["test/fixtures/*bad*"]
+        }
       }
     },
 
