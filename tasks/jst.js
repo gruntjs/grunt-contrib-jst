@@ -11,8 +11,7 @@ module.exports = function(grunt) {
   "use strict";
 
   var _ = require("underscore");
-
-  var escapeQuote = function(name) { return name.replace("'","\\'"); };
+  var helpers = require('grunt-contrib-lib').init(grunt);
 
   // filename conversion for templates
   var defaultProcessName = function(name) { return name; };
@@ -32,7 +31,7 @@ module.exports = function(grunt) {
 
     var compiled, srcFiles, src, filename;
     var output = [];
-    var namespace = "this['" + options.namespace + "']";
+    var nsInfo = helpers.getNamespaceDeclaration(options.namespace);
 
     this.files.forEach(function(files) {
       srcFiles = grunt.file.expandFiles(files.src);
@@ -46,12 +45,12 @@ module.exports = function(grunt) {
           grunt.fail.warn("JST failed to compile.");
         }
 
-        filename = escapeQuote(processName(file));
-        output.push(namespace+"['"+filename+"'] = "+compiled+";");
+        filename = processName(file);
+        output.push(nsInfo.namespace+"["+JSON.stringify(filename)+"] = "+compiled+";");
       });
 
       if(output.length > 0) {
-        output.unshift(namespace + " = " + namespace + " || {};");
+        output.unshift(nsInfo.declaration);
         grunt.file.write(files.dest, output.join("\n\n"));
         grunt.log.writeln("File '" + files.dest + "' created.");
       }

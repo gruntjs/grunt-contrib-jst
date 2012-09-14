@@ -6,16 +6,24 @@ exports['jst'] = {
 
     var expect, result;
 
-    test.expect(2);
+    test.expect(4);
 
-    expect = 'this[\'JST\'] = this[\'JST\'] || {};\n\nthis[\'JST\'][\'test/fixtures/it\\\'s-a-bad-filename.html\'] = function(obj){\nvar __p=\'\';var print=function(){__p+=Array.prototype.join.call(arguments, \'\')};\nwith(obj||{}){\n__p+=\'never name your file like this.\';\n}\nreturn __p;\n};\n\nthis[\'JST\'][\'test/fixtures/template.html\'] = function(obj){\nvar __p=\'\';var print=function(){__p+=Array.prototype.join.call(arguments, \'\')};\nwith(obj||{}){\n__p+=\'<head><title>\'+\n( title )+\n\'</title></head>\';\n}\nreturn __p;\n};';
+    expect = grunt.file.read("test/expected/jst.js");
     result = grunt.file.read("tmp/jst.js");
     test.equal(expect, result, "should compile underscore templates into JST");
 
-    expect = 'this[\'JST\'] = this[\'JST\'] || {};\n\nthis[\'JST\'][\'test/fixtures/it\\\'s-a-bad-filename.html\'] = function(obj){\nvar __p=\'\';var print=function(){__p+=Array.prototype.join.call(arguments, \'\')};\nwith(obj||{}){\n__p+=\'never name your file like this.\';\n}\nreturn __p;\n};';
+    expect = grunt.file.read("test/expected/uglyfile.js");
     result = grunt.file.read("tmp/uglyfile.js");
     test.equal(expect, result, "should escape single quotes in filenames");
 
+    expect = grunt.file.read("test/expected/ns_nested.js");
+    result = grunt.file.read("tmp/ns_nested.js");
+    test.equal(expect, result, "should define parts of nested namespaces");
+    
+    expect = grunt.file.read("test/expected/ns_nested.js"); // same as previous test
+    result = grunt.file.read("tmp/ns_nested_this.js");
+    test.equal(expect, result, "should define parts of nested namespaces, ignoring this.");
+    
     test.done();
   }
 };

@@ -37,7 +37,14 @@ This controls how this task (and its helpers) operate and should contain key:val
 
 ##### namespace ```string```
 
-The namespace in which the resulting JST templates are assigned to.
+The namespace, in dot notation, in which the resulting JST templates are assigned to. The example below assigns templates to the `MyApp.Templates` namespace:
+
+Example:
+``` javascript
+options: {
+  namespace: 'MyApp.Templates'
+}
+```
 
 ##### processName ```function```
 
