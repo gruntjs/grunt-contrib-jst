@@ -42,12 +42,28 @@ module.exports = function(grunt) {
     jst: {
       compile: {
         files: {
-          "tmp/jst.js": ["test/fixtures/*.html"]
+          "tmp/jst.js": ["test/fixtures/template.html"]
         }
       },
       uglyfile: {
         files: {
-          "tmp/uglyfile.js": ["test/fixtures/*bad*"]
+          "tmp/uglyfile.js": ["test/fixtures/*bad-filename*"]
+        }
+      },
+      ns_nested: {
+        options: {
+          namespace: "MyApp.JST.Main"
+        },
+        files: {
+          "tmp/ns_nested.js": ["test/fixtures/template.html"]
+        }
+      },
+      ns_nested_this: {
+        options: {
+          namespace: "this.MyApp.JST.Main"
+        },
+        files: {
+          "tmp/ns_nested_this.js": ["test/fixtures/template.html"]
         }
       }
     },
