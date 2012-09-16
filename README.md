@@ -37,12 +37,12 @@ This controls how this task (and its helpers) operate and should contain key:val
 
 ##### namespace ```string```
 
-The namespace, in dot notation, in which the resulting JST templates are assigned to. The example below assigns templates to the `MyApp.Templates` namespace:
+The namespace in which the precompiled templates will be asssigned (default is JST).  *Use dot notation (e.g. App.Templates) for nested namespaces.*
 
 Example:
 ``` javascript
 options: {
-  namespace: 'MyApp.Templates'
+  namespace: 'JST'
 }
 ```
 
@@ -81,5 +81,6 @@ jst: {
 
 ## Release History
 
+* 2012/08/16 - v0.2.3 - Support for nested namespaces.
 * 2012/08/12 - v0.2.2 - Added processName functionality & escaping single quotes in filenames.
 * 2012/08/10 - v0.2.0 - Refactored from grunt-contrib into individual repo.
