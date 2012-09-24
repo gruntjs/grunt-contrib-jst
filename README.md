@@ -1,4 +1,4 @@
-# grunt-contrib-jst
+# grunt-contrib-jst [![Build Status](https://secure.travis-ci.org/gruntjs/grunt-contrib-jst.png?branch=master)](http://travis-ci.org/gruntjs/grunt-contrib-jst)
 > Compile underscore templates to JST file (part of the [grunt-contrib](https://github.com/gruntjs/grunt-contrib) collection).  Submitted by [Tim Branyen](/tbranyen).
 
 ## Getting Started
