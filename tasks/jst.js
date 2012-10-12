@@ -10,14 +10,14 @@ module.exports = function(grunt) {
   "use strict";
 
   var _ = require("underscore");
-  var helpers = require('grunt-contrib-lib').init(grunt);
+  var helpers = require('grunt-lib-contrib').init(grunt);
 
   // filename conversion for templates
   var defaultProcessName = function(name) { return name; };
 
   grunt.registerMultiTask("jst", "Compile underscore templates to JST file", function() {
 
-    var helpers = require("grunt-contrib-lib").init(grunt);
+    var helpers = require("grunt-lib-contrib").init(grunt);
     var options = helpers.options(this, {namespace: "JST", templateSettings: {}});
 
     // assign filename transformation functions
