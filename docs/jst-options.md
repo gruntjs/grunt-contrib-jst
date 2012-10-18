@@ -1,4 +1,7 @@
-##### files ```object```
+# Options
+
+## files
+Type: `Object`
 
 This defines what files this task will process and should contain key:value pairs.
 
@@ -6,24 +9,15 @@ The key (destination) should be an unique filepath (supports [grunt.template](ht
 
 Note: Values are precompiled to the namespaced JST array in the order passed.
 
-##### options ```object```
+## options.namespace
+Type: `String`
+Default: 'JST'
 
-This controls how this task (and its helpers) operate and should contain key:value pairs, see options below.
+The namespace in which the precompiled templates will be asssigned.  *Use dot notation (e.g. App.Templates) for nested namespaces.*
 
-#### Options
-
-##### namespace ```string```
-
-The namespace in which the precompiled templates will be asssigned (default is JST).  *Use dot notation (e.g. App.Templates) for nested namespaces.*
-
-Example:
-```js
-options: {
-  namespace: 'JST'
-}
-```
-
-##### processName ```function```
+## options.processName
+Type: ```function```
+Default: null
 
 This option accepts a function which takes one argument (the template filepath) and returns a string which will be used as the key for the precompiled template object.  The example below stores all templates on the default JST namespace in capital letters.
 
@@ -35,11 +29,11 @@ options: {
 }
 ```
 
-##### templateSettings ```object```
+## options.templateSettings
+Type: ```Object```
+Default: null
 
 The settings passed to underscore when compiling templates.
-
-#### Config Examples
 
 ```js
 jst: {

@@ -6,27 +6,27 @@
  * Licensed under the MIT license.
  */
 
-module.exports = function(grunt) {
-  "use strict";
+'use strict';
 
-  var _ = require("underscore");
-  var helpers = require('grunt-lib-contrib').init(grunt);
+module.exports = function(grunt) {
+
+  var _ = require('underscore');
 
   // filename conversion for templates
   var defaultProcessName = function(name) { return name; };
 
-  grunt.registerMultiTask("jst", "Compile underscore templates to JST file", function() {
+  grunt.registerMultiTask('jst', 'Compile underscore templates to JST file', function() {
 
-    var helpers = require("grunt-lib-contrib").init(grunt);
-    var options = helpers.options(this, {namespace: "JST", templateSettings: {}});
+    var helpers = require('grunt-lib-contrib').init(grunt);
+    var options = this.options({
+      namespace: 'JST',
+      templateSettings: {}
+    });
 
     // assign filename transformation functions
     var processName = options.processName || defaultProcessName;
 
-    grunt.verbose.writeflags(options, "Options");
-
-    // TODO: ditch this when grunt v0.4 is released
-    this.files = this.files || helpers.normalizeMultiTaskFiles(this.data, this.target);
+    grunt.verbose.writeflags(options, 'Options');
 
     var compiled, srcFiles, src, filename;
     var output = [];
@@ -41,21 +41,19 @@ module.exports = function(grunt) {
           compiled = _.template(src, false, options.templateSettings).source;
         } catch (e) {
           grunt.log.error(e);
-          grunt.fail.warn("JST failed to compile.");
+          grunt.fail.warn('JST failed to compile.');
         }
 
         filename = processName(file);
-        output.push(nsInfo.namespace+"["+JSON.stringify(filename)+"] = "+compiled+";");
+        output.push(nsInfo.namespace+'['+JSON.stringify(filename)+'] = '+compiled+';');
       });
 
       if(output.length > 0) {
         output.unshift(nsInfo.declaration);
-        grunt.file.write(files.dest, output.join("\n\n"));
-        grunt.log.writeln("File '" + files.dest + "' created.");
+        grunt.file.write(files.dest, output.join('\n\n'));
+        grunt.log.writeln('File "' + files.dest + '" created.');
       }
     });
 
-
   });
-
 };
