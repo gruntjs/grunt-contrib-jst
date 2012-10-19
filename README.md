@@ -46,7 +46,7 @@ grunt.initConfig({
 ```
 ### Options
 
-#### files
+## files
 Type: `Object`
 
 This defines what files this task will process and should contain key:value pairs.
@@ -55,13 +55,13 @@ The key (destination) should be an unique filepath (supports [grunt.template](ht
 
 Note: Values are precompiled to the namespaced JST array in the order passed.
 
-#### options.namespace
+## options.namespace
 Type: `String`
 Default: 'JST'
 
 The namespace in which the precompiled templates will be asssigned.  *Use dot notation (e.g. App.Templates) for nested namespaces.*
 
-#### options.processName
+## options.processName
 Type: ```function```
 Default: null
 
@@ -75,7 +75,7 @@ options: {
 }
 ```
 
-#### options.templateSettings
+## options.templateSettings
 Type: ```Object```
 Default: null
 
@@ -123,4 +123,4 @@ jst: {
 --
 Task submitted by <a href="http://tbranyen.com">Tim Branyen</a>.
 
-*Generated on Thu Oct 18 2012 18:02:35.*
+*Generated on Thu Oct 18 2012 19:03:04.*
