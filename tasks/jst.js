@@ -29,31 +29,29 @@ module.exports = function(grunt) {
     grunt.verbose.writeflags(options, 'Options');
 
     var compiled, srcFiles, src, filename;
-    var output = [];
     var nsInfo = helpers.getNamespaceDeclaration(options.namespace);
 
-    this.files.forEach(function(files) {
-      srcFiles = grunt.file.expandFiles(files.src);
-      srcFiles.forEach(function(file) {
-        src = grunt.file.read(file);
+    var files = grunt.file.expandFiles(this.file.src);
+    var output = files.map(function(file) {
+      var src = grunt.file.read(file);
 
-        try {
-          compiled = _.template(src, false, options.templateSettings).source;
-        } catch (e) {
-          grunt.log.error(e);
-          grunt.fail.warn('JST failed to compile.');
-        }
-
-        filename = processName(file);
-        output.push(nsInfo.namespace+'['+JSON.stringify(filename)+'] = '+compiled+';');
-      });
-
-      if(output.length > 0) {
-        output.unshift(nsInfo.declaration);
-        grunt.file.write(files.dest, output.join('\n\n'));
-        grunt.log.writeln('File "' + files.dest + '" created.');
+      try {
+        compiled = _.template(src, false, options.templateSettings).source;
+      } catch (e) {
+        grunt.log.error(e);
+        grunt.fail.warn('JST failed to compile.');
       }
+
+      filename = processName(file);
+
+      return nsInfo.namespace+'['+JSON.stringify(filename)+'] = '+compiled+';';
     });
+
+    if(output.length > 0) {
+      output.unshift(nsInfo.declaration);
+      grunt.file.write(this.file.dest, output.join('\n\n'));
+      grunt.log.writeln('File "' + this.file.dest + '" created.');
+    }
 
   });
 };
