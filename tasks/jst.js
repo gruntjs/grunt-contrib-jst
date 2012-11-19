@@ -31,7 +31,7 @@ module.exports = function(grunt) {
     var compiled, srcFiles, src, filename;
     var nsInfo = helpers.getNamespaceDeclaration(options.namespace);
 
-    var files = grunt.file.expandFiles(this.file.src);
+    var files = this.file.src;
     var output = files.map(function(file) {
       var src = grunt.file.read(file);
 
