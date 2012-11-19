@@ -28,7 +28,7 @@ module.exports = function(grunt) {
 
     grunt.verbose.writeflags(options, 'Options');
 
-    var compiled, srcFiles, src, filename;
+    var compiled, src, filename;
     var nsInfo = helpers.getNamespaceDeclaration(options.namespace);
 
     var files = this.file.src;
