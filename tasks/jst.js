@@ -50,6 +50,10 @@ module.exports = function(grunt) {
 
       if(output.length > 0) {
         output.unshift(nsInfo.declaration);
+        if (options.selfExecuting) {
+            output.unshift("define(function(){");
+            output.push("    return " + nsInfo.namespace + ";\n});");
+        }
         grunt.file.write(files.dest, output.join("\n\n"));
         grunt.log.writeln("File '" + files.dest + "' created.");
       }

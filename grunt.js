@@ -44,6 +44,14 @@ module.exports = function(grunt) {
           "tmp/jst.js": ["test/fixtures/template.html"]
         }
       },
+      self_exe: {
+        options: {
+          selfExecuting:true
+        },
+        files: {
+          "tmp/self_exe.js": ["test/fixtures/template.html"]
+        }
+      },
       uglyfile: {
         files: {
           "tmp/uglyfile.js": ["test/fixtures/*bad-filename*"]

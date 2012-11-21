@@ -6,7 +6,7 @@ exports['jst'] = {
 
     var expect, result;
 
-    test.expect(4);
+    test.expect(5);
 
     expect = grunt.file.read("test/expected/jst.js");
     result = grunt.file.read("tmp/jst.js");
@@ -23,6 +23,10 @@ exports['jst'] = {
     expect = grunt.file.read("test/expected/ns_nested.js"); // same as previous test
     result = grunt.file.read("tmp/ns_nested_this.js");
     test.equal(expect, result, "should define parts of nested namespaces, ignoring this.");
+    
+    expect = grunt.file.read("test/expected/self_exe.js"); // same as previous test
+    result = grunt.file.read("tmp/self_exe.js");
+    test.equal(expect, result, "should wrap the template as a self-executing function");
     
     test.done();
   }
