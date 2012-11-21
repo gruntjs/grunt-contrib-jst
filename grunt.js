@@ -44,6 +44,14 @@ module.exports = function(grunt) {
           "tmp/jst.js": ["test/fixtures/template.html"]
         }
       },
+      prettify: {
+        options: {
+          prettify: true
+        },
+        files: {
+          "tmp/pretty.js": ["test/fixtures/template.html"]
+        }
+      },
       uglyfile: {
         files: {
           "tmp/uglyfile.js": ["test/fixtures/*bad-filename*"]

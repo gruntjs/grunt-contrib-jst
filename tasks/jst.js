@@ -44,6 +44,9 @@ module.exports = function(grunt) {
           grunt.fail.warn("JST failed to compile.");
         }
 
+        if (options.prettify) {
+          compiled = compiled.replace(/\n+/g, '');
+        }
         filename = processName(file);
         output.push(nsInfo.namespace+"["+JSON.stringify(filename)+"] = "+compiled+";");
       });
