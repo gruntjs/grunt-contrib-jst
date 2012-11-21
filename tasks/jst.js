@@ -56,11 +56,11 @@ module.exports = function(grunt) {
         if (options.selfExecuting) {
             if (options.prettify) {
               output.forEach(function(line, index) {
-                output[index] = "    " + line;
+                output[index] = "  " + line;
               });
             }
             output.unshift("define(function(){");
-            output.push("    return " + nsInfo.namespace + ";\n});");
+            output.push("  return " + nsInfo.namespace + ";\n});");
         }
         grunt.file.write(files.dest, output.join("\n\n"));
         grunt.log.writeln("File '" + files.dest + "' created.");
