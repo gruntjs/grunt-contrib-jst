@@ -44,6 +44,15 @@ module.exports = function(grunt) {
           "tmp/jst.js": ["test/fixtures/template.html"]
         }
       },
+      pretty_exe: {
+        options: {
+          prettify: true,
+          selfExecuting: true
+        },
+        files: {
+          "tmp/pretty_exe.js": ["test/fixtures/template.html"]
+        }
+      },
       prettify: {
         options: {
           prettify: true
