@@ -28,13 +28,13 @@ exports['jst'] = {
     result = grunt.file.read("tmp/pretty.js");
     test.equal(expect, result, "should make the output be 1 line per template, making the output less ugly");
     
-    expect = grunt.file.read("test/expected/self_exe.js"); 
-    result = grunt.file.read("tmp/self_exe.js");
-    test.equal(expect, result, "should wrap the template as a self-executing function");
+    expect = grunt.file.read("test/expected/amd_wrapper.js"); 
+    result = grunt.file.read("tmp/amd_wrapper.js");
+    test.equal(expect, result, "should wrap the template with define for AMD pattern");
     
-    expect = grunt.file.read("test/expected/pretty_exe.js"); 
-    result = grunt.file.read("tmp/pretty_exe.js");
-    test.equal(expect, result, "should make the self executing output pretty");
+    expect = grunt.file.read("test/expected/pretty_amd.js"); 
+    result = grunt.file.read("tmp/pretty_amd.js");
+    test.equal(expect, result, "should make the AMD wrapper output pretty");
 
     test.done();
   }

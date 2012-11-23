@@ -60,12 +60,12 @@ options: {
 }
 ```
 
-##### selfExecuting ```boolean```
+##### amdWrapper ```boolean```
 
-With Require.js and a pre-compiled template.js you want a self-executing
-function. This will wrap the output in:
+With Require.js and a pre-compiled template.js you want the templates to be
+wrapped in a define. This will wrap the output in:
 ``` javascript
-(function() {
+define(function() {
   //Templates
   return this["NAMESPACE"];
 });
@@ -74,7 +74,7 @@ function. This will wrap the output in:
 Example:
 ``` javascript
 options: {
-  selfExecuting: true
+  amdWrapper: true
 }
 ```
 

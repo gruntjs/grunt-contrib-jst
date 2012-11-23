@@ -53,7 +53,7 @@ module.exports = function(grunt) {
 
       if(output.length > 0) {
         output.unshift(nsInfo.declaration);
-        if (options.selfExecuting) {
+        if (options.amdWrapper) {
             if (options.prettify) {
               output.forEach(function(line, index) {
                 output[index] = "  " + line;

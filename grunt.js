@@ -44,13 +44,13 @@ module.exports = function(grunt) {
           "tmp/jst.js": ["test/fixtures/template.html"]
         }
       },
-      pretty_exe: {
+      pretty_amd: {
         options: {
           prettify: true,
-          selfExecuting: true
+          amdWrapper: true
         },
         files: {
-          "tmp/pretty_exe.js": ["test/fixtures/template.html"]
+          "tmp/pretty_amd.js": ["test/fixtures/template.html"]
         }
       },
       prettify: {
@@ -61,12 +61,12 @@ module.exports = function(grunt) {
           "tmp/pretty.js": ["test/fixtures/template.html"]
         }
       },
-      self_exe: {
+      amd_wrapper: {
         options: {
-          selfExecuting:true
+          amdWrapper:true
         },
         files: {
-          "tmp/self_exe.js": ["test/fixtures/template.html"]
+          "tmp/amd_wrapper.js": ["test/fixtures/template.html"]
         }
       },
       uglyfile: {
