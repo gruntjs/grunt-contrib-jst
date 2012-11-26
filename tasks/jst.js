@@ -42,6 +42,9 @@ module.exports = function(grunt) {
         grunt.fail.warn('JST failed to compile.');
       }
 
+      if (options.prettify) {
+        compiled = compiled.replace(/\n+/g, '');
+      }
       filename = processName(file);
 
       return nsInfo.namespace+'['+JSON.stringify(filename)+'] = '+compiled+';';
@@ -49,6 +52,15 @@ module.exports = function(grunt) {
 
     if(output.length > 0) {
       output.unshift(nsInfo.declaration);
+      if (options.amdWrapper) {
+        if (options.prettify) {
+          output.forEach(function(line, index) {
+            output[index] = "  " + line;
+          });
+        }
+        output.unshift("define(function(){");
+        output.push("  return " + nsInfo.namespace + ";\n});");
+      }
       grunt.file.write(this.file.dest, output.join('\n\n'));
       grunt.log.writeln('File "' + this.file.dest + '" created.');
     }
