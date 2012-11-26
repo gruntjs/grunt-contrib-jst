@@ -50,7 +50,7 @@ jst: {
 }
 ```
 
-##### options.prettify
+## options.prettify
 Type: ```boolean```
 Default: false
 
@@ -64,7 +64,7 @@ options: {
 }
 ```
 
-##### options.amdWrapper
+## options.amdWrapper
 Type: ```boolean```
 Default: false
 
