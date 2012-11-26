@@ -47,6 +47,37 @@ options: {
 }
 ```
 
+##### prettify ```boolean```
+
+When doing a quick once-over of your compiled template file, it's nice to see
+an easy-to-read format that has one line per template. This will accomplish
+that.
+
+Example:
+```javascript
+options: {
+  prettify: true
+}
+```
+
+##### amdWrapper ```boolean```
+
+With Require.js and a pre-compiled template.js you want the templates to be
+wrapped in a define. This will wrap the output in:
+``` javascript
+define(function() {
+  //Templates
+  return this["NAMESPACE"];
+});
+```
+
+Example:
+``` javascript
+options: {
+  amdWrapper: true
+}
+```
+
 ##### processName ```function```
 
 This option accepts a function which takes one argument (the template filepath) and returns a string which will be used as the key for the precompiled template object.  The example below stores all templates on the default JST namespace in capital letters.
