@@ -84,6 +84,40 @@ jst: {
   }
 }
 ```
+##### options.prettify
+Type: ```boolean```
+Default: false
+
+When doing a quick once-over of your compiled template file, it's nice to see
+an easy-to-read format that has one line per template. This will accomplish
+that.
+
+```javascript
+options: {
+  prettify: true
+}
+```
+
+##### options.amdWrapper
+Type: ```boolean```
+Default: false
+
+With Require.js and a pre-compiled template.js you want the templates to be
+wrapped in a define. This will wrap the output in:
+
+``` javascript
+define(function() {
+  //Templates
+  return this["NAMESPACE"];
+});
+```
+
+Example:
+``` javascript
+options: {
+  amdWrapper: true
+}
+```
 ### Examples
 
 ```js
