@@ -17,40 +17,19 @@ npm install grunt-contrib-jst --save-dev
 ## Jst task
 _Run this task with the `grunt jst` command._
 
-### Overview
+_This task is a [multi task][] so any targets, files and options should be specified according to the [multi task][] documentation._
+[multi task]: https://github.com/gruntjs/grunt/wiki/Configuring-tasks
 
-In your project's Gruntfile, add a section named `jst` to the data object passed into `grunt.initConfig()`.
 
-```js
-grunt.initConfig({
-  jst: {
-    options: {
-      // Task-specific options go here.
-    },
-    your_target: {
-      // Target-specific file lists and/or options go here.
-    },
-  },
-})
-```
 ### Options
 
-#### files
-Type: `Object`
-
-This defines what files this task will process and should contain key:value pairs.
-
-The key (destination) should be an unique filepath (supports [grunt.template](https://github.com/gruntjs/grunt/blob/master/docs/api_template.md)) and the value (source) should be a filepath or an array of filepaths (supports [minimatch](https://github.com/isaacs/minimatch)).
-
-Note: Values are precompiled to the namespaced JST array in the order passed.
-
-#### options.namespace
+#### namespace
 Type: `String`
 Default: 'JST'
 
 The namespace in which the precompiled templates will be asssigned.  *Use dot notation (e.g. App.Templates) for nested namespaces.*
 
-#### options.processName
+#### processName
 Type: ```function```
 Default: null
 
@@ -64,7 +43,7 @@ options: {
 }
 ```
 
-#### options.templateSettings
+#### templateSettings
 Type: ```Object```
 Default: null
 
@@ -84,7 +63,8 @@ jst: {
   }
 }
 ```
-##### options.prettify
+
+#### prettify
 Type: ```boolean```
 Default: false
 
@@ -98,7 +78,7 @@ options: {
 }
 ```
 
-##### options.amdWrapper
+#### amdWrapper
 Type: ```boolean```
 Default: false
 
@@ -118,7 +98,8 @@ options: {
   amdWrapper: true
 }
 ```
-### Examples
+
+### Usage Examples
 
 ```js
 jst: {
@@ -135,6 +116,7 @@ jst: {
 }
 ```
 
+
 ## Release History
 
  * 2012-10-11   v0.3.1   Rename grunt-contrib-lib dep to grunt-lib-contrib.
@@ -147,4 +129,4 @@ jst: {
 
 Task submitted by [Tim Branyen](http://tbranyen.com)
 
-*This file was generated on Tue Nov 13 2012 16:12:13.*
+*This file was generated on Wed Nov 28 2012 08:40:57.*

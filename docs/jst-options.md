@@ -1,21 +1,12 @@
 # Options
 
-## files
-Type: `Object`
-
-This defines what files this task will process and should contain key:value pairs.
-
-The key (destination) should be an unique filepath (supports [grunt.template](https://github.com/gruntjs/grunt/blob/master/docs/api_template.md)) and the value (source) should be a filepath or an array of filepaths (supports [minimatch](https://github.com/isaacs/minimatch)).
-
-Note: Values are precompiled to the namespaced JST array in the order passed.
-
-## options.namespace
+## namespace
 Type: `String`
 Default: 'JST'
 
 The namespace in which the precompiled templates will be asssigned.  *Use dot notation (e.g. App.Templates) for nested namespaces.*
 
-## options.processName
+## processName
 Type: ```function```
 Default: null
 
@@ -29,7 +20,7 @@ options: {
 }
 ```
 
-## options.templateSettings
+## templateSettings
 Type: ```Object```
 Default: null
 
@@ -50,7 +41,7 @@ jst: {
 }
 ```
 
-## options.prettify
+## prettify
 Type: ```boolean```
 Default: false
 
@@ -64,7 +55,7 @@ options: {
 }
 ```
 
-## options.amdWrapper
+## amdWrapper
 Type: ```boolean```
 Default: false
 
