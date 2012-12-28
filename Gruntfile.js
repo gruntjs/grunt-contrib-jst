@@ -80,6 +80,14 @@ module.exports = function(grunt) {
         files: {
           "tmp/ns_nested_this.js": ["test/fixtures/template.html"]
         }
+      },
+      strip: {
+        options: {
+          strip: true
+        },
+        files: {
+          "tmp/strip.js": ["test/fixtures/indented_template.html"]
+        }
       }
     },
 

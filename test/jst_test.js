@@ -6,7 +6,7 @@ exports['jst'] = {
 
     var expect, result;
 
-    test.expect(7);
+    test.expect(8);
 
     expect = grunt.file.read("test/expected/jst.js");
     result = grunt.file.read("tmp/jst.js");
@@ -35,7 +35,11 @@ exports['jst'] = {
     expect = grunt.file.read("test/expected/pretty_amd.js"); 
     result = grunt.file.read("tmp/pretty_amd.js");
     test.equal(expect, result, "should make the AMD wrapper output pretty");
-    
+
+    expect = grunt.file.read("test/expected/strip.js");
+    result = grunt.file.read("tmp/strip.js");
+    test.equal(expect, result, "should strip surrounding whitespace characters from each line");
+
     test.done();
   }
 };
