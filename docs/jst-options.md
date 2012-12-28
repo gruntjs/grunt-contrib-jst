@@ -75,3 +75,17 @@ options: {
   amdWrapper: true
 }
 ```
+
+## strip
+Type: ```boolean```
+Default: false
+
+Whitespace and newline characters will be stripped from the beginning and
+the end of each line.
+
+Example:
+``` javascript
+options: {
+  strip: true
+}
+```

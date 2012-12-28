@@ -35,6 +35,10 @@ module.exports = function(grunt) {
     var output = files.map(function(file) {
       var src = grunt.file.read(file);
 
+      if (options.strip) {
+        src = src.replace(/(^\s+|\s+$)/gm, '');
+      }
+
       try {
         compiled = _.template(src, false, options.templateSettings).source;
       } catch (e) {
