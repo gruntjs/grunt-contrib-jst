@@ -37,7 +37,6 @@ module.exports = function(grunt) {
 
       if (options.strip) {
         src = src.replace(/(^\s+|\s+$)/gm, '');
-        src = src.replace(/[\r\n]/g, '');
       }
 
       try {
