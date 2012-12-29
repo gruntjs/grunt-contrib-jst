@@ -75,3 +75,19 @@ options: {
   amdWrapper: true
 }
 ```
+
+## processContent
+Type: ```function```
+
+This option accepts a function which takes one argument (the file content) and
+returns a string which will be used as template string.
+The example below strips whitespace characters from the beginning and the end of
+each line.
+
+```javascript
+options: {
+  processContent: function(src) {
+    return src.replace(/(^\s+|\s+$)/gm, '');
+  }
+}
+```

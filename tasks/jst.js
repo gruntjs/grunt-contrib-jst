@@ -20,7 +20,8 @@ module.exports = function(grunt) {
     var helpers = require('grunt-lib-contrib').init(grunt);
     var options = this.options({
       namespace: 'JST',
-      templateSettings: {}
+      templateSettings: {},
+      processContent: function (src) { return src; }
     });
 
     // assign filename transformation functions
@@ -33,7 +34,7 @@ module.exports = function(grunt) {
 
     var files = this.file.src;
     var output = files.map(function(file) {
-      var src = grunt.file.read(file);
+      var src = options.processContent(grunt.file.read(file));
 
       try {
         compiled = _.template(src, false, options.templateSettings).source;

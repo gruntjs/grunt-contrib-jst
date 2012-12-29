@@ -6,7 +6,7 @@ exports['jst'] = {
 
     var expect, result;
 
-    test.expect(7);
+    test.expect(8);
 
     expect = grunt.file.read("test/expected/jst.js");
     result = grunt.file.read("tmp/jst.js");
@@ -36,6 +36,10 @@ exports['jst'] = {
     result = grunt.file.read("tmp/pretty_amd.js");
     test.equal(expect, result, "should make the AMD wrapper output pretty");
     
+    expect = grunt.file.read("test/expected/process_content.js");
+    result = grunt.file.read("tmp/process_content.js");
+    test.equal(expect, result, "should convert file content");
+
     test.done();
   }
 };
