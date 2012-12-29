@@ -80,6 +80,16 @@ module.exports = function(grunt) {
         files: {
           "tmp/ns_nested_this.js": ["test/fixtures/template.html"]
         }
+      },
+      process_content: {
+        options: {
+          processContent: function (src) {
+            return src.replace(/(^\s+|\s+$)/gm, '');
+          }
+        },
+        files: {
+          "tmp/process_content.js": ["test/fixtures/indent_template.html"]
+        }
       }
     },
 
