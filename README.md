@@ -99,6 +99,22 @@ options: {
 }
 ```
 
+#### processContent
+Type: ```function```
+
+This option accepts a function which takes one argument (the file content) and
+returns a string which will be used as template string.
+The example below strips whitespace characters from the beginning and the end of
+each line.
+
+```javascript
+options: {
+  processContent: function(src) {
+    return src.replace(/(^\s+|\s+$)/gm, '');
+  }
+}
+```
+
 ### Usage Examples
 
 ```js
@@ -119,14 +135,14 @@ jst: {
 
 ## Release History
 
- * 2012-10-11   v0.3.1   Rename grunt-contrib-lib dep to grunt-lib-contrib.
- * 2012-08-22   v0.3.0   Options no longer accepted from global config key.
- * 2012-08-15   v0.2.3   Support for nested namespaces.
- * 2012-08-11   v0.2.2   Added processName functionality & escaping single quotes in filenames.
- * 2012-08-09   v0.2.0   Refactored from grunt-contrib into individual repo.
+ * 2012-10-12   v0.3.1   Rename grunt-contrib-lib dep to grunt-lib-contrib.
+ * 2012-08-23   v0.3.0   Options no longer accepted from global config key.
+ * 2012-08-16   v0.2.3   Support for nested namespaces.
+ * 2012-08-12   v0.2.2   Added processName functionality & escaping single quotes in filenames.
+ * 2012-08-10   v0.2.0   Refactored from grunt-contrib into individual repo.
 
 ---
 
 Task submitted by [Tim Branyen](http://tbranyen.com)
 
-*This file was generated on Wed Nov 28 2012 08:40:57.*
+*This file was generated on Sat Dec 29 2012 22:17:11.*
