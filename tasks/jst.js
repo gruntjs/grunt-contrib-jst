@@ -10,7 +10,7 @@
 
 module.exports = function(grunt) {
 
-  var _ = require('underscore');
+  var _ = require('lodash');
 
   // filename conversion for templates
   var defaultProcessName = function(name) { return name; };
