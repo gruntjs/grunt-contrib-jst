@@ -29,42 +29,43 @@ module.exports = function(grunt) {
 
     grunt.verbose.writeflags(options, 'Options');
 
-    var compiled, src, filename;
+    var compiled, src, filename, output;
     var nsInfo = helpers.getNamespaceDeclaration(options.namespace);
 
-    var files = this.file.src;
-    var output = files.map(function(file) {
-      var src = options.processContent(grunt.file.read(file));
+    this.files.forEach(function(f) {
+      output = f.src.map(function(file) {
+        src = options.processContent(grunt.file.read(file));
 
-      try {
-        compiled = _.template(src, false, options.templateSettings).source;
-      } catch (e) {
-        grunt.log.error(e);
-        grunt.fail.warn('JST failed to compile.');
-      }
-
-      if (options.prettify) {
-        compiled = compiled.replace(/\n+/g, '');
-      }
-      filename = processName(file);
-
-      return nsInfo.namespace+'['+JSON.stringify(filename)+'] = '+compiled+';';
-    });
-
-    if(output.length > 0) {
-      output.unshift(nsInfo.declaration);
-      if (options.amdWrapper) {
-        if (options.prettify) {
-          output.forEach(function(line, index) {
-            output[index] = "  " + line;
-          });
+        try {
+          compiled = _.template(src, false, options.templateSettings).source;
+        } catch (e) {
+          grunt.log.error(e);
+          grunt.fail.warn('JST failed to compile.');
         }
-        output.unshift("define(function(){");
-        output.push("  return " + nsInfo.namespace + ";\n});");
+
+        if (options.prettify) {
+          compiled = compiled.replace(/\n+/g, '');
+        }
+        filename = processName(file);
+
+        return nsInfo.namespace+'['+JSON.stringify(filename)+'] = '+compiled+';';
+      });
+
+      if (output.length > 0) {
+        output.unshift(nsInfo.declaration);
+        if (options.amdWrapper) {
+          if (options.prettify) {
+            output.forEach(function(line, index) {
+              output[index] = "  " + line;
+            });
+          }
+          output.unshift("define(function(){");
+          output.push("  return " + nsInfo.namespace + ";\n});");
+        }
+        grunt.file.write(f.dest, output.join('\n\n'));
+        grunt.log.writeln('File "' + f.dest + '" created.');
       }
-      grunt.file.write(this.file.dest, output.join('\n\n'));
-      grunt.log.writeln('File "' + this.file.dest + '" created.');
-    }
+    });
 
   });
 };
