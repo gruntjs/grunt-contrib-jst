@@ -16,12 +16,13 @@ module.exports = function(grunt) {
   var defaultProcessName = function(name) { return name; };
 
   grunt.registerMultiTask('jst', 'Compile underscore templates to JST file', function() {
-
+    var lf = grunt.util.linefeed;
     var helpers = require('grunt-lib-contrib').init(grunt);
     var options = this.options({
       namespace: 'JST',
       templateSettings: {},
-      processContent: function (src) { return src; }
+      processContent: function (src) { return src; },
+      separator: lf + lf
     });
 
     // assign filename transformation functions
@@ -29,12 +30,21 @@ module.exports = function(grunt) {
 
     grunt.verbose.writeflags(options, 'Options');
 
-    var compiled, src, filename, output;
     var nsInfo = helpers.getNamespaceDeclaration(options.namespace);
 
     this.files.forEach(function(f) {
-      output = f.src.map(function(file) {
-        src = options.processContent(grunt.file.read(file));
+      var output = f.src.filter(function(filepath) {
+        // Warn on and remove invalid source files (if nonull was set).
+        if (!grunt.file.exists(filepath)) {
+          grunt.log.warn('Source file "' + filepath + '" not found.');
+          return false;
+        } else {
+          return true;
+        }
+      })
+      .map(function(filepath) {
+        var src = options.processContent(grunt.file.read(filepath));
+        var compiled, filename;
 
         try {
           compiled = _.template(src, false, options.templateSettings).source;
@@ -44,14 +54,16 @@ module.exports = function(grunt) {
         }
 
         if (options.prettify) {
-          compiled = compiled.replace(/\n+/g, '');
+          compiled = compiled.replace(new RegExp(lf, 'g'), '');
         }
-        filename = processName(file);
+        filename = processName(filepath);
 
         return nsInfo.namespace+'['+JSON.stringify(filename)+'] = '+compiled+';';
       });
 
-      if (output.length > 0) {
+      if (output.length < 1) {
+        grunt.log.warn('Destination not written because compiled files were empty.');
+      } else {
         output.unshift(nsInfo.declaration);
         if (options.amdWrapper) {
           if (options.prettify) {
@@ -60,9 +72,9 @@ module.exports = function(grunt) {
             });
           }
           output.unshift("define(function(){");
-          output.push("  return " + nsInfo.namespace + ";\n});");
+          output.push("  return " + nsInfo.namespace + ";" + lf + "});");
         }
-        grunt.file.write(f.dest, output.join('\n\n'));
+        grunt.file.write(f.dest, output.join(grunt.util.normalizelf(options.separator)));
         grunt.log.writeln('File "' + f.dest + '" created.');
       }
     });
