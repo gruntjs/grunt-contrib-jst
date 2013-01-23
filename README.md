@@ -143,6 +143,7 @@ jst: {
 
 ## Release History
 
+ * 2013-01-22   v0.5.0rc7   Updating grunt/gruntplugin dependencies to rc7. Changing in-development grunt/gruntplugin dependency versions from tilde version ranges to specific versions.
  * 2013-01-08   v0.4.0rc5   Updating to work with grunt v0.4.0rc5. Switching to this.files api.
  * 2012-10-11   v0.3.1   Rename grunt-contrib-lib dep to grunt-lib-contrib.
  * 2012-08-22   v0.3.0   Options no longer accepted from global config key.
@@ -154,4 +155,4 @@ jst: {
 
 Task submitted by [Tim Branyen](http://tbranyen.com)
 
-*This file was generated on Thu Jan 10 2013 13:04:44.*
+*This file was generated on Wed Jan 23 2013 11:47:16.*
