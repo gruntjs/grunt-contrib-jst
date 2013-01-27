@@ -143,16 +143,16 @@ jst: {
 
 ## Release History
 
- * 2013-01-22   v0.5.0rc7   Updating grunt/gruntplugin dependencies to rc7. Changing in-development grunt/gruntplugin dependency versions from tilde version ranges to specific versions.
- * 2013-01-08   v0.4.0rc5   Updating to work with grunt v0.4.0rc5. Switching to this.files api.
- * 2012-10-11   v0.3.1   Rename grunt-contrib-lib dep to grunt-lib-contrib.
- * 2012-08-22   v0.3.0   Options no longer accepted from global config key.
- * 2012-08-15   v0.2.3   Support for nested namespaces.
- * 2012-08-11   v0.2.2   Added processName functionality & escaping single quotes in filenames.
- * 2012-08-09   v0.2.0   Refactored from grunt-contrib into individual repo.
+ * 2013-01-23   v0.4.0rc7   Updating grunt/gruntplugin dependencies to rc7. Changing in-development grunt/gruntplugin dependency versions from tilde version ranges to specific versions.
+ * 2013-01-09   v0.4.0rc5   Updating to work with grunt v0.4.0rc5. Switching to this.files api.
+ * 2012-10-12   v0.3.1   Rename grunt-contrib-lib dep to grunt-lib-contrib.
+ * 2012-08-23   v0.3.0   Options no longer accepted from global config key.
+ * 2012-08-16   v0.2.3   Support for nested namespaces.
+ * 2012-08-12   v0.2.2   Added processName functionality & escaping single quotes in filenames.
+ * 2012-08-10   v0.2.0   Refactored from grunt-contrib into individual repo.
 
 ---
 
 Task submitted by [Tim Branyen](http://tbranyen.com)
 
-*This file was generated on Wed Jan 23 2013 11:47:16.*
+*This file was generated on Sun Jan 27 2013 12:03:30.*
