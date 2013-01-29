@@ -1,7 +1,7 @@
 {
   "name": "grunt-contrib-jst",
   "description": "Precompile Underscore templates to JST file.",
-  "version": "0.4.0rc7",
+  "version": "0.4.1rc7",
   "homepage": "https://github.com/gruntjs/grunt-contrib-jst",
   "author": {
     "name": "Grunt Team",
