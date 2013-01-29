@@ -54,7 +54,7 @@ module.exports = function(grunt) {
         }
 
         if (options.prettify) {
-          compiled = compiled.replace(new RegExp(lf, 'g'), '');
+          compiled = compiled.replace(new RegExp('\n', 'g'), '');
         }
         filename = processName(filepath);
 
