@@ -11,7 +11,7 @@ npm install grunt-contrib-jst --save-dev
 ```
 
 [grunt]: http://gruntjs.com/
-[Getting Started]: https://github.com/gruntjs/grunt/blob/devel/docs/getting_started.md
+[Getting Started]: http://gruntjs.com/getting-started
 
 
 ## Jst task
@@ -143,6 +143,7 @@ jst: {
 
 ## Release History
 
+ * 2012-01-28   v0.4.1rc7   Correct line endings for lodash output on windows.
  * 2013-01-22   v0.4.0rc7   Updating grunt/gruntplugin dependencies to rc7. Changing in-development grunt/gruntplugin dependency versions from tilde version ranges to specific versions.
  * 2013-01-08   v0.4.0rc5   Updating to work with grunt v0.4.0rc5. Switching to this.files api.
  * 2012-10-11   v0.3.1   Rename grunt-contrib-lib dep to grunt-lib-contrib.
@@ -155,4 +156,4 @@ jst: {
 
 Task submitted by [Tim Branyen](http://tbranyen.com)
 
-*This file was generated on Sat Jan 26 2013 22:56:46.*
+*This file was generated on Tue Feb 05 2013 11:54:24.*
