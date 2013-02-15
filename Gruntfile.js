@@ -31,12 +31,20 @@ module.exports = function(grunt) {
     // Configuration to be run (and then tested).
     jst: {
       compile: {
+        options: {
+          templateSettings: {
+            variable: 'obj'
+          }
+        },
         files: {
           "tmp/jst.js": ["test/fixtures/template.html"]
         }
       },
       pretty_amd: {
         options: {
+          templateSettings: {
+            variable: 'obj'
+          },
           prettify: true,
           amdWrapper: true
         },
@@ -46,6 +54,9 @@ module.exports = function(grunt) {
       },
       prettify: {
         options: {
+          templateSettings: {
+            variable: 'obj'
+          },
           prettify: true
         },
         files: {
@@ -54,6 +65,9 @@ module.exports = function(grunt) {
       },
       amd_wrapper: {
         options: {
+          templateSettings: {
+            variable: 'obj'
+          },
           amdWrapper:true
         },
         files: {
@@ -61,12 +75,20 @@ module.exports = function(grunt) {
         }
       },
       uglyfile: {
+        options: {
+          templateSettings: {
+            variable: 'obj'
+          },
+        },
         files: {
           "tmp/uglyfile.js": ["test/fixtures/*bad-filename*"]
         }
       },
       ns_nested: {
         options: {
+          templateSettings: {
+            variable: 'obj'
+          },
           namespace: "MyApp.JST.Main"
         },
         files: {
@@ -75,6 +97,9 @@ module.exports = function(grunt) {
       },
       ns_nested_this: {
         options: {
+          templateSettings: {
+            variable: 'obj'
+          },
           namespace: "this.MyApp.JST.Main"
         },
         files: {
@@ -83,6 +108,9 @@ module.exports = function(grunt) {
       },
       process_content: {
         options: {
+          templateSettings: {
+            variable: 'obj'
+          },
           processContent: function (src) {
             return src.replace(/(^\s+|\s+$)/gm, '');
           }
