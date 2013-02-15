@@ -6,7 +6,7 @@ exports['jst'] = {
 
     var expect, result;
 
-    test.expect(8);
+    test.expect(9);
 
     expect = grunt.file.read("test/expected/jst.js");
     result = grunt.file.read("tmp/jst.js");
@@ -39,6 +39,10 @@ exports['jst'] = {
     expect = grunt.file.read("test/expected/process_content.js");
     result = grunt.file.read("tmp/process_content.js");
     test.equal(expect, result, "should convert file content");
+
+    expect = grunt.file.read("test/expected/local_scope.js");
+    result = grunt.file.read("tmp/local_scope.js");
+    test.equal(expect, result, "should add `with` block when templateSettings.variable is undefined");
 
     test.done();
   }
