@@ -118,6 +118,11 @@ module.exports = function(grunt) {
         files: {
           "tmp/process_content.js": ["test/fixtures/indent_template.html"]
         }
+      },
+      local_scope: {
+        files: {
+          "tmp/local_scope.js": ["test/fixtures/template_local_scope.html"]
+        }
       }
     },
 
