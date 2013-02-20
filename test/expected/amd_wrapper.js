@@ -1,4 +1,4 @@
-define(function(){
+define(['underscore'], function(_) {
 
 this["JST"] = this["JST"] || {};
 
