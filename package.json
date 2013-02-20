@@ -28,7 +28,7 @@
     "test": "grunt test"
   },
   "dependencies": {
-    "lodash": "~1.0.0",
+    "lodash": "~1.0.1",
     "grunt-lib-contrib": "~0.5.1"
   },
   "devDependencies": {
