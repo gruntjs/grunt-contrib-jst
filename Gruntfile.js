@@ -74,6 +74,18 @@ module.exports = function(grunt) {
           "tmp/amd_wrapper.js": ["test/fixtures/template.html"]
         }
       },
+      amd_custom_path: {
+        options: {
+          templateSettings: {
+            variable: 'obj'
+          },
+          amdWrapper:true,
+          amdPathToUnderscore: '../mock/path/to/lodash'
+        },
+        files: {
+          "tmp/amd_custom_path.js": ["test/fixtures/template.html"]
+        }
+      },
       uglyfile: {
         options: {
           templateSettings: {
