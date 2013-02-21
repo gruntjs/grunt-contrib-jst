@@ -1,4 +1,4 @@
-define(['underscore'], function(_) {
+define(['../mock/path/to/lodash'], function(_) {
 
 this["JST"] = this["JST"] || {};
 
