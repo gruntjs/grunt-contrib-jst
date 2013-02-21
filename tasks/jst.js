@@ -22,7 +22,8 @@ module.exports = function(grunt) {
       namespace: 'JST',
       templateSettings: {},
       processContent: function (src) { return src; },
-      separator: lf + lf
+      separator: lf + lf,
+      amdPathToUnderscore: 'underscore'
     });
 
     // assign filename transformation functions
@@ -71,7 +72,7 @@ module.exports = function(grunt) {
               output[index] = "  " + line;
             });
           }
-          output.unshift("define(function(){");
+          output.unshift("define(['" + options.amdPathToUnderscore + "'], function(_) {");
           output.push("  return " + nsInfo.namespace + ";" + lf + "});");
         }
         grunt.file.write(f.dest, output.join(grunt.util.normalizelf(options.separator)));
