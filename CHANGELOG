@@ -1,3 +1,8 @@
+v0.5.0:
+  date: 2013-03-06
+  changes:
+    - When `namespace` is false and `amd` is true, return templates directly from AMD wrapper.
+    - Rename `amdwrapper` option to `amd` to match grunt-contrib-handlebars.
 v0.4.1:
   date: 2013-02-15
   changes:

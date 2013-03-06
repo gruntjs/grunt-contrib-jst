@@ -149,6 +149,7 @@ jst: {
 
 ## Release History
 
+ * 2013-03-05   v0.5.0   When `namespace` is false and `amd` is true, return templates directly from AMD wrapper. Rename `amdwrapper` option to `amd` to match grunt-contrib-handlebars.
  * 2013-02-14   v0.4.1   First official release for Grunt 0.4.0.
  * 2012-01-28   v0.4.1rc7   Correct line endings for lodash output on windows.
  * 2013-01-22   v0.4.0rc7   Updating grunt/gruntplugin dependencies to rc7. Changing in-development grunt/gruntplugin dependency versions from tilde version ranges to specific versions.
@@ -163,4 +164,4 @@ jst: {
 
 Task submitted by [Tim Branyen](http://tbranyen.com)
 
-*This file was generated on Wed Feb 20 2013 12:35:57.*
+*This file was generated on Wed Mar 06 2013 12:51:11.*
