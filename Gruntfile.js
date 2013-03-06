@@ -46,7 +46,7 @@ module.exports = function(grunt) {
             variable: 'obj'
           },
           prettify: true,
-          amdWrapper: true
+          amd: true
         },
         files: {
           "tmp/pretty_amd.js": ["test/fixtures/template.html"]
@@ -68,7 +68,7 @@ module.exports = function(grunt) {
           templateSettings: {
             variable: 'obj'
           },
-          amdWrapper:true
+          amd:true
         },
         files: {
           "tmp/amd_wrapper.js": ["test/fixtures/template.html"]
@@ -79,7 +79,7 @@ module.exports = function(grunt) {
           templateSettings: {
             variable: 'obj'
           },
-          amdWrapper:true,
+          amd:true,
           namespace:false
         },
         files: {

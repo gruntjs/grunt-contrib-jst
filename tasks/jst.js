@@ -61,7 +61,7 @@ module.exports = function(grunt) {
         }
         filename = processName(filepath);
 
-        if (options.amdWrapper && options.namespace === false) {
+        if (options.amd && options.namespace === false) {
           return 'return ' + compiled;
         }
         return nsInfo.namespace+'['+JSON.stringify(filename)+'] = '+compiled+';';
@@ -73,7 +73,7 @@ module.exports = function(grunt) {
         if (options.namespace !== false) {
           output.unshift(nsInfo.declaration);
         }
-        if (options.amdWrapper) {
+        if (options.amd) {
           if (options.prettify) {
             output.forEach(function(line, index) {
               output[index] = "  " + line;
