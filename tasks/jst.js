@@ -83,7 +83,7 @@ module.exports = function(grunt) {
           if (options.namespace !== false) {
             // Namespace has not been explicitly set to false; the AMD
             // wrapper will return the object containing the template.
-            output.push("  return " + nsInfo.namespace + ";" + lf);
+            output.push("  return " + nsInfo.namespace + ";");
           }
           output.push("});");
         }

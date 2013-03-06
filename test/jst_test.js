@@ -6,7 +6,7 @@ exports['jst'] = {
 
     var expect, result;
 
-    test.expect(9);
+    test.expect(10);
 
     expect = grunt.file.read("test/expected/jst.js");
     result = grunt.file.read("tmp/jst.js");
@@ -31,6 +31,10 @@ exports['jst'] = {
     expect = grunt.file.read("test/expected/amd_wrapper.js"); 
     result = grunt.file.read("tmp/amd_wrapper.js");
     test.equal(expect, result, "should wrap the template with define for AMD pattern");
+    
+    expect = grunt.file.read("test/expected/amd_wrapper_no_ns.js");
+    result = grunt.file.read("tmp/amd_wrapper_no_ns.js");
+    test.equal(expect, result, "should wrap the template with define for AMD pattern and return the function itself with no namespace");
     
     expect = grunt.file.read("test/expected/pretty_amd.js"); 
     result = grunt.file.read("tmp/pretty_amd.js");

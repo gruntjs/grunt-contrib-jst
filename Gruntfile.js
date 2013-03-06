@@ -74,6 +74,18 @@ module.exports = function(grunt) {
           "tmp/amd_wrapper.js": ["test/fixtures/template.html"]
         }
       },
+      amd_wrapper_no_ns: {
+        options: {
+          templateSettings: {
+            variable: 'obj'
+          },
+          amdWrapper:true,
+          namespace:false
+        },
+        files: {
+          "tmp/amd_wrapper_no_ns.js": ["test/fixtures/template.html"]
+        }
+      },
       uglyfile: {
         options: {
           templateSettings: {
