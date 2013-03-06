@@ -41,7 +41,7 @@ Concatenated files will be joined on this string.
 Type: `String`
 Default: 'JST'
 
-The namespace in which the precompiled templates will be asssigned.  *Use dot notation (e.g. App.Templates) for nested namespaces.*
+The namespace in which the precompiled templates will be assigned. Use dot notation (e.g. App.Templates) for nested namespaces or false for no namespace wrapping. When false with amd option set true, templates will be returned directly from the AMD wrapper.
 
 #### processName
 Type: `function`
@@ -92,24 +92,23 @@ options: {
 }
 ```
 
-#### amdWrapper
+#### amd
 Type: `boolean`
 Default: false
 
-With Require.js and a pre-compiled template.js you want the templates to be
-wrapped in a define. This will wrap the output in:
+Wraps the output file with an AMD define function and returns the compiled template namespace unless namespace has been explicitly set to false in which case the template function will be returned directly.
 
 ```js
 define(function() {
-  //Templates
-  return this["NAMESPACE"];
+    //...//
+    returns this['[template namespace]'];
 });
 ```
 
 Example:
 ```js
 options: {
-  amdWrapper: true
+  amd: true
 }
 ```
 
@@ -164,4 +163,4 @@ jst: {
 
 Task submitted by [Tim Branyen](http://tbranyen.com)
 
-*This file was generated on Wed Mar 06 2013 12:51:11.*
+*This file was generated on Wed Mar 06 2013 12:53:43.*
