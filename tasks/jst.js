@@ -30,7 +30,10 @@ module.exports = function(grunt) {
 
     grunt.verbose.writeflags(options, 'Options');
 
-    var nsInfo = helpers.getNamespaceDeclaration(options.namespace);
+    var nsInfo;
+    if (options.namespace !== false) {
+      nsInfo = helpers.getNamespaceDeclaration(options.namespace);
+    }
 
     this.files.forEach(function(f) {
       var output = f.src.filter(function(filepath) {
@@ -58,13 +61,18 @@ module.exports = function(grunt) {
         }
         filename = processName(filepath);
 
+        if (options.amdWrapper && options.namespace === false) {
+          return 'return ' + compiled;
+        }
         return nsInfo.namespace+'['+JSON.stringify(filename)+'] = '+compiled+';';
       });
 
       if (output.length < 1) {
         grunt.log.warn('Destination not written because compiled files were empty.');
       } else {
-        output.unshift(nsInfo.declaration);
+        if (options.namespace !== false) {
+          output.unshift(nsInfo.declaration);
+        }
         if (options.amdWrapper) {
           if (options.prettify) {
             output.forEach(function(line, index) {
@@ -72,7 +80,12 @@ module.exports = function(grunt) {
             });
           }
           output.unshift("define(function(){");
-          output.push("  return " + nsInfo.namespace + ";" + lf + "});");
+          if (options.namespace !== false) {
+            // Namespace has not been explicitly set to false; the AMD
+            // wrapper will return the object containing the template.
+            output.push("  return " + nsInfo.namespace + ";" + lf);
+          }
+          output.push("});");
         }
         grunt.file.write(f.dest, output.join(grunt.util.normalizelf(options.separator)));
         grunt.log.writeln('File "' + f.dest + '" created.');
