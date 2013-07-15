@@ -1,4 +1,4 @@
-# grunt-contrib-jst [![Build Status](https://secure.travis-ci.org/gruntjs/grunt-contrib-jst.png?branch=master)](http://travis-ci.org/gruntjs/grunt-contrib-jst)
+# grunt-contrib-jst [![Build Status](https://travis-ci.org/gruntjs/grunt-contrib-jst.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-jst)
 
 > Precompile Underscore templates to JST file.
 
@@ -101,7 +101,7 @@ Wraps the output file with an AMD define function and returns the compiled templ
 ```js
 define(function() {
     //...//
-    returns this['[template namespace]'];
+    return this['[template namespace]'];
 });
 ```
 
@@ -148,19 +148,20 @@ jst: {
 
 ## Release History
 
- * 2013-03-05   v0.5.0   When `namespace` is false and `amd` is true, return templates directly from AMD wrapper. Rename `amdwrapper` option to `amd` to match grunt-contrib-handlebars.
- * 2013-02-14   v0.4.1   First official release for Grunt 0.4.0.
- * 2012-01-28   v0.4.1rc7   Correct line endings for lodash output on windows.
- * 2013-01-22   v0.4.0rc7   Updating grunt/gruntplugin dependencies to rc7. Changing in-development grunt/gruntplugin dependency versions from tilde version ranges to specific versions.
- * 2013-01-08   v0.4.0rc5   Updating to work with grunt v0.4.0rc5. Switching to this.files api.
- * 2012-10-11   v0.3.1   Rename grunt-contrib-lib dep to grunt-lib-contrib.
- * 2012-08-22   v0.3.0   Options no longer accepted from global config key.
- * 2012-08-15   v0.2.3   Support for nested namespaces.
- * 2012-08-11   v0.2.2   Added processName functionality & escaping single quotes in filenames.
- * 2012-08-09   v0.2.0   Refactored from grunt-contrib into individual repo.
+ * 2013-07-14   v0.5.1   Display filepath when fails to compile.
+ * 2013-03-06   v0.5.0   When `namespace` is false and `amd` is true, return templates directly from AMD wrapper. Rename `amdwrapper` option to `amd` to match grunt-contrib-handlebars.
+ * 2013-02-15   v0.4.1   First official release for Grunt 0.4.0.
+ * 2012-01-29   v0.4.1rc7   Correct line endings for lodash output on windows.
+ * 2013-01-23   v0.4.0rc7   Updating grunt/gruntplugin dependencies to rc7. Changing in-development grunt/gruntplugin dependency versions from tilde version ranges to specific versions.
+ * 2013-01-09   v0.4.0rc5   Updating to work with grunt v0.4.0rc5. Switching to this.files api.
+ * 2012-10-12   v0.3.1   Rename grunt-contrib-lib dep to grunt-lib-contrib.
+ * 2012-08-23   v0.3.0   Options no longer accepted from global config key.
+ * 2012-08-16   v0.2.3   Support for nested namespaces.
+ * 2012-08-12   v0.2.2   Added processName functionality & escaping single quotes in filenames.
+ * 2012-08-10   v0.2.0   Refactored from grunt-contrib into individual repo.
 
 ---
 
 Task submitted by [Tim Branyen](http://tbranyen.com)
 
-*This file was generated on Wed Mar 06 2013 12:53:43.*
+*This file was generated on Sun Jul 14 2013 19:23:02.*

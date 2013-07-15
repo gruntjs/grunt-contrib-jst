@@ -1,3 +1,7 @@
+v0.5.1:
+  date: 2013-07-14
+  changes:
+    - Display filepath when fails to compile.
 v0.5.0:
   date: 2013-03-06
   changes:
