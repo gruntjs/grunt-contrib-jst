@@ -70,7 +70,7 @@ Wraps the output file with an AMD define function and returns the compiled templ
 ```js
 define(function() {
     //...//
-    returns this['[template namespace]'];
+    return this['[template namespace]'];
 });
 ```
 
