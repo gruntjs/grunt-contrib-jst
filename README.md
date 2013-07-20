@@ -112,19 +112,21 @@ options: {
 }
 ```
 
+Named module example:
 ```js
+options: {
+  amd: 'my_module'
+}
+```
+
+```js
+// output:
 define('my_module', function() {
     //...//
     return this['[template namespace]'];
 });
 ```
 
-Example:
-```js
-options: {
-  amd: 'my_module'
-}
-```
 
 
 #### processContent
