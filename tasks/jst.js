@@ -52,13 +52,32 @@ module.exports = function(grunt) {
       })
       .map(function(filepath) {
         var src = options.processContent(grunt.file.read(filepath));
-        var compiled, filename;
+        var compiled = '', filename;
 
-        try {
-          compiled = _.template(src, false, options.templateSettings).source;
-        } catch (e) {
-          grunt.log.error(e);
-          grunt.fail.warn('JST "' + filepath + '" failed to compile.');
+        if( options.multiple ) {
+            var cheerio = require('cheerio');
+            var $ = cheerio.load(src);
+            compiled = [];
+            $('script[type="text/template"]').each(function(i,src){
+                var el = cheerio(src), id = el.attr('id');
+                if( !id ) {
+                  return;
+                }
+                try {
+                    compiled.push({id:id, content: _.template(el.text(), false, options.templateSettings).source });
+                } catch (e) {
+                    grunt.log.error(e);
+                    grunt.fail.warn('JST "' + filepath + '" failed to compile.');
+                }
+
+            });
+        }  else {
+          try {
+            compiled = _.template(src, false, options.templateSettings).source;
+          } catch (e) {
+            grunt.log.error(e);
+            grunt.fail.warn('JST "' + filepath + '" failed to compile.');
+          }
         }
 
         if (options.prettify) {
@@ -69,7 +88,14 @@ module.exports = function(grunt) {
         if (options.amd && options.namespace === false) {
           return 'return ' + compiled;
         }
-        return nsInfo.namespace+'['+JSON.stringify(filename)+'] = '+compiled+';';
+        if( options.multiple ) {
+            compiled = _.map(compiled, function(tpl) {
+                return nsInfo.namespace+'["'+tpl.id+'"]='+tpl.content+';';
+            });
+          return compiled.join('');
+        } else {
+          return nsInfo.namespace+'['+JSON.stringify(filename)+'] = '+compiled+';';
+        }
       });
 
       if (output.length < 1) {

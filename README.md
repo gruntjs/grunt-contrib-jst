@@ -143,6 +143,29 @@ options: {
 }
 ```
 
+#### multiple
+Type: `boolean`
+Default: false
+
+This settings allows you to get multiple templates from each html files.
+It would add each tpl id to the namespace.
+
+```js
+options: {
+  multiple: true
+}
+```
+
+```html
+<script type="text/template" id="fisrt_tpl">
+// first tpl code here
+</script>
+<script type="text/template" id="second_tpl">
+// second tpl code here
+</script>
+```
+
+
 ### Usage Examples
 
 ```js
