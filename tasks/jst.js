@@ -35,6 +35,11 @@ module.exports = function(grunt) {
       nsInfo = helpers.getNamespaceDeclaration(options.namespace);
     }
 
+    var module_name='';
+    if ( _.isString(options.amd) ) {
+        module_name = "'"+ options.amd +"', ";
+    }
+
     this.files.forEach(function(f) {
       var output = f.src.filter(function(filepath) {
         // Warn on and remove invalid source files (if nonull was set).
@@ -79,7 +84,7 @@ module.exports = function(grunt) {
               output[index] = "  " + line;
             });
           }
-          output.unshift("define(function(){");
+          output.unshift("define("+ module_name + "function(){");
           if (options.namespace !== false) {
             // Namespace has not been explicitly set to false; the AMD
             // wrapper will return the object containing the template.

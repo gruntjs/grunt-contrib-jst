@@ -93,10 +93,10 @@ options: {
 ```
 
 #### amd
-Type: `boolean`
+Type: `boolean` or `string`
 Default: false
 
-Wraps the output file with an AMD define function and returns the compiled template namespace unless namespace has been explicitly set to false in which case the template function will be returned directly.
+Wraps the output file with an AMD define function and returns the compiled template namespace unless namespace has been explicitly set to false in which case the template function will be returned directly. If you indicate an string, it would be used as AMD module name.
 
 ```js
 define(function() {
@@ -111,6 +111,21 @@ options: {
   amd: true
 }
 ```
+
+```js
+define('my_module', function() {
+    //...//
+    return this['[template namespace]'];
+});
+```
+
+Example:
+```js
+options: {
+  amd: 'my_module'
+}
+```
+
 
 #### processContent
 Type: `function`
