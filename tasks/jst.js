@@ -64,14 +64,21 @@ module.exports = function(grunt) {
         if (options.amd && options.namespace === false) {
           return 'return ' + compiled;
         }
+        if (options.commonjs) {
+            return 'retval['+JSON.stringify(filename)+'] = '+compiled+';';
+        }
         return nsInfo.namespace+'['+JSON.stringify(filename)+'] = '+compiled+';';
       });
 
       if (output.length < 1) {
         grunt.log.warn('Destination not written because compiled files were empty.');
       } else {
-        if (options.namespace !== false) {
+        if (!options.commonjs && options.namespace !== false) {
           output.unshift(nsInfo.declaration);
+        }
+        if (options.commonjs) {
+            output.unshift("var retval = {};");
+            output.push("module.exports = retval;");
         }
         if (options.amd) {
           if (options.prettify) {
