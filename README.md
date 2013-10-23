@@ -1,4 +1,4 @@
-# grunt-contrib-jst [![Build Status](https://travis-ci.org/gruntjs/grunt-contrib-jst.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-jst)
+# grunt-contrib-jst v0.5.1 [![Build Status](https://travis-ci.org/gruntjs/grunt-contrib-jst.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-jst)
 
 > Precompile Underscore templates to JST file.
 
@@ -144,6 +144,7 @@ jst: {
   }
 }
 ```
+Note that the `interpolate: /\{\{(.+?)\}\}/g` setting above is simply an example of overwriting lodash's default interpolation. If you want to parse templates with the default `_.template` behavior (i.e. using `<div><%= this.id %></div>`), there's no need to overwrite `templateSettings.interpolate`.
 
 
 ## Release History
@@ -164,4 +165,4 @@ jst: {
 
 Task submitted by [Tim Branyen](http://tbranyen.com)
 
-*This file was generated on Sun Jul 14 2013 19:23:02.*
+*This file was generated on Sat Oct 19 2013 14:22:27.*
