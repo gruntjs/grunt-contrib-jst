@@ -46,7 +46,9 @@ module.exports = function(grunt) {
             variable: 'obj'
           },
           prettify: true,
-          amd: true
+          format: {
+            type: 'amd'
+          }
         },
         files: {
           "tmp/pretty_amd.js": ["test/fixtures/template.html"]
@@ -63,27 +65,47 @@ module.exports = function(grunt) {
           "tmp/pretty.js": ["test/fixtures/template.html"]
         }
       },
-      amd_wrapper: {
+      format_amd: {
         options: {
           templateSettings: {
             variable: 'obj'
           },
-          amd:true
+          format: {
+            type: 'amd'
+          }
         },
         files: {
-          "tmp/amd_wrapper.js": ["test/fixtures/template.html"]
+          "tmp/format_amd.js": ["test/fixtures/template.html"]
         }
       },
-      amd_wrapper_no_ns: {
+      format_amd_with_dep: {
         options: {
           templateSettings: {
             variable: 'obj'
           },
-          amd:true,
-          namespace:false
+          format: {
+            type: 'amd',
+            deps: {
+              "_": "lodash"
+            }
+          }
         },
         files: {
-          "tmp/amd_wrapper_no_ns.js": ["test/fixtures/template.html"]
+          "tmp/format_amd_with_dep.js": ["test/fixtures/template.html"]
+        }
+      },
+      format_amd_no_ns: {
+        options: {
+          templateSettings: {
+            variable: 'obj'
+          },
+          format: {
+            type: 'amd'
+          },
+          namespace: false
+        },
+        files: {
+          "tmp/format_amd_no_ns.js": ["test/fixtures/template.html"]
         }
       },
       uglyfile: {

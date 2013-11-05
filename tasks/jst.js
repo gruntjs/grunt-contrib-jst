@@ -11,6 +11,7 @@
 module.exports = function(grunt) {
 
   var _ = require('lodash');
+  var wrapfor = require('wrapfor');
 
   // filename conversion for templates
   var defaultProcessName = function(name) { return name; };
@@ -61,8 +62,8 @@ module.exports = function(grunt) {
         }
         filename = processName(filepath);
 
-        if (options.amd && options.namespace === false) {
-          return 'return ' + compiled;
+        if (options.namespace === false) {
+          return compiled;
         }
         return nsInfo.namespace+'['+JSON.stringify(filename)+'] = '+compiled+';';
       });
@@ -73,21 +74,17 @@ module.exports = function(grunt) {
         if (options.namespace !== false) {
           output.unshift(nsInfo.declaration);
         }
-        if (options.amd) {
-          if (options.prettify) {
-            output.forEach(function(line, index) {
-              output[index] = "  " + line;
-            });
-          }
-          output.unshift("define(function(){");
-          if (options.namespace !== false) {
-            // Namespace has not been explicitly set to false; the AMD
-            // wrapper will return the object containing the template.
-            output.push("  return " + nsInfo.namespace + ";");
-          }
-          output.push("});");
+        output = output.join(grunt.util.normalizelf(options.separator));
+
+        if (options.format) {
+          var wrapFn = wrapfor[options.format.type];
+          var wrapOpts = {
+            deps: options.format.deps,
+            exports: nsInfo?nsInfo.namespace:false
+          };
+          output = wrapFn(output, wrapOpts);
         }
-        grunt.file.write(f.dest, output.join(grunt.util.normalizelf(options.separator)));
+        grunt.file.write(f.dest, output);
         grunt.log.writeln('File "' + f.dest + '" created.');
       }
     });

@@ -1,5 +1,5 @@
-define(function(){
-
+define(function(require){
+var _ = require('lodash');
 this["JST"] = this["JST"] || {};
 
 this["JST"]["test/fixtures/template.html"] = function(obj) {
@@ -9,7 +9,5 @@ __p += '<head><title>' +
 '</title></head>';
 return __p
 };
-
-  return this["JST"];
-
+return this["JST"];
 });

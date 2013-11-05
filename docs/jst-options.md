@@ -61,25 +61,23 @@ options: {
 }
 ```
 
-## amd
-Type: `boolean`
-Default: false
+## format
+Type: `Object`
+Default: {}
 
-Wraps the output file with an AMD define function and returns the compiled template namespace unless namespace has been explicitly set to false in which case the template function will be returned directly.
+Supported keys:
+* `type`: `'amd'|'cjs'`
+* `deps`: `{ depVar: depname }`
+
+Converts the output file to a specified module format (amd or cjs).  The compiled template namespace will be exported unless `namespace` has been explicitly set to false, in which case the template function will be returned directly.  If a `deps` object has been defined, the dependencies will be included in-line.
 
 ```js
 define(function() {
-    //...//
-    return this['[template namespace]'];
+  //...//
+  return this['[template namespace]'];
 });
 ```
 
-Example:
-```js
-options: {
-  amd: true
-}
-```
 
 ## processContent
 Type: `function`

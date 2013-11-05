@@ -1,5 +1,4 @@
-define(function(){
-
+define(function(require){
 return function(obj) {
 var __t, __p = '', __e = _.escape;
 __p += '<head><title>' +
@@ -7,5 +6,4 @@ __p += '<head><title>' +
 '</title></head>';
 return __p
 }
-
 });
