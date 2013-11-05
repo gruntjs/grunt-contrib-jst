@@ -41,7 +41,7 @@ Concatenated files will be joined on this string.
 Type: `String`
 Default: 'JST'
 
-The namespace in which the precompiled templates will be assigned. Use dot notation (e.g. App.Templates) for nested namespaces or false for no namespace wrapping. When false with amd option set true, templates will be returned directly from the AMD wrapper.
+The namespace in which the precompiled templates will be assigned. Use dot notation (e.g. App.Templates) for nested namespaces or false for no namespace wrapping. When false and formatting to amd or cjs module, templates will be returned directly from the AMD wrapper.
 
 #### processName
 Type: `function`
@@ -103,7 +103,14 @@ Supported keys:
 Converts the output file to a specified module format (amd or cjs).  The compiled template namespace will be exported unless `namespace` has been explicitly set to false, in which case the template function will be returned directly.  If a `deps` object has been defined, the dependencies will be included in-line.
 
 ```js
-define(function() {
+format: {
+  type: 'amd',
+  deps: {
+    '_': 'lodash'
+  }
+};
+define(function(require) {
+  var _ = require('lodash');
   //...//
   return this['[template namespace]'];
 });
@@ -163,4 +170,4 @@ Note that the `interpolate: /\{\{(.+?)\}\}/g` setting above is simply an example
 
 Task submitted by [Tim Branyen](http://tbranyen.com)
 
-*This file was generated on Tue Nov 05 2013 12:07:26.*
+*This file was generated on Tue Nov 05 2013 12:13:17.*

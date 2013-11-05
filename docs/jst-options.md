@@ -72,7 +72,14 @@ Supported keys:
 Converts the output file to a specified module format (amd or cjs).  The compiled template namespace will be exported unless `namespace` has been explicitly set to false, in which case the template function will be returned directly.  If a `deps` object has been defined, the dependencies will be included in-line.
 
 ```js
-define(function() {
+format: {
+  type: 'amd',
+  deps: {
+    '_': 'lodash'
+  }
+};
+define(function(require) {
+  var _ = require('lodash');
   //...//
   return this['[template namespace]'];
 });
