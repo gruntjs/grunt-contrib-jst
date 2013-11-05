@@ -10,7 +10,7 @@ Concatenated files will be joined on this string.
 Type: `String`
 Default: 'JST'
 
-The namespace in which the precompiled templates will be assigned. Use dot notation (e.g. App.Templates) for nested namespaces or false for no namespace wrapping. When false with amd option set true, templates will be returned directly from the AMD wrapper.
+The namespace in which the precompiled templates will be assigned. Use dot notation (e.g. App.Templates) for nested namespaces or false for no namespace wrapping. When false and formatting to amd or cjs module, templates will be returned directly from the AMD wrapper.
 
 ## processName
 Type: `function`
