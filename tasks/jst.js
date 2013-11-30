@@ -28,8 +28,6 @@ module.exports = function(grunt) {
     // assign filename transformation functions
     var processName = options.processName || defaultProcessName;
 
-    grunt.verbose.writeflags(options, 'Options');
-
     var nsInfo;
     if (options.namespace !== false) {
       nsInfo = helpers.getNamespaceDeclaration(options.namespace);
