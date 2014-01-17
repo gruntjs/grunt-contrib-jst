@@ -22,7 +22,8 @@ module.exports = function(grunt) {
       namespace: 'JST',
       templateSettings: {},
       processContent: function (src) { return src; },
-      separator: lf + lf
+      separator: lf + lf,
+      template: _.template
     });
 
     // assign filename transformation functions
@@ -48,7 +49,7 @@ module.exports = function(grunt) {
         var compiled, filename;
 
         try {
-          compiled = _.template(src, false, options.templateSettings).source;
+          compiled = options.template(src, false, options.templateSettings).source;
         } catch (e) {
           grunt.log.error(e);
           grunt.fail.warn('JST "' + filepath + '" failed to compile.');
