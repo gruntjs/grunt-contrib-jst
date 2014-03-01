@@ -7,11 +7,10 @@
  */
 
 'use strict';
+var _ = require('lodash');
+var chalk = require('chalk');
 
 module.exports = function(grunt) {
-
-  var _ = require('lodash');
-
   // filename conversion for templates
   var defaultProcessName = function(name) { return name; };
 
@@ -37,7 +36,7 @@ module.exports = function(grunt) {
       var output = f.src.filter(function(filepath) {
         // Warn on and remove invalid source files (if nonull was set).
         if (!grunt.file.exists(filepath)) {
-          grunt.log.warn('Source file "' + filepath + '" not found.');
+          grunt.log.warn('Source file ' + chalk.cyan(filepath) + ' not found.');
           return false;
         } else {
           return true;
@@ -51,7 +50,7 @@ module.exports = function(grunt) {
           compiled = _.template(src, false, options.templateSettings).source;
         } catch (e) {
           grunt.log.error(e);
-          grunt.fail.warn('JST "' + filepath + '" failed to compile.');
+          grunt.fail.warn('JST ' + chalk.cyan(filepath) + ' failed to compile.');
         }
 
         if (options.prettify) {
@@ -86,7 +85,7 @@ module.exports = function(grunt) {
           output.push("});");
         }
         grunt.file.write(f.dest, output.join(grunt.util.normalizelf(options.separator)));
-        grunt.log.writeln('File "' + f.dest + '" created.');
+        grunt.log.writeln('File ' + chalk.cyan(f.dest) + ' created.');
       }
     });
 
