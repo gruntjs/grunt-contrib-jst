@@ -33,6 +33,11 @@ module.exports = function(grunt) {
       nsInfo = helpers.getNamespaceDeclaration(options.namespace);
     }
 
+    var module_name='';
+    if ( _.isString(options.amd) ) {
+        module_name = "'"+ options.amd +"', ";
+    }
+
     this.files.forEach(function(f) {
       var output = f.src.filter(function(filepath) {
         // Warn on and remove invalid source files (if nonull was set).
@@ -45,13 +50,32 @@ module.exports = function(grunt) {
       })
       .map(function(filepath) {
         var src = options.processContent(grunt.file.read(filepath));
-        var compiled, filename;
+        var compiled = '', filename;
 
-        try {
-          compiled = _.template(src, false, options.templateSettings).source;
-        } catch (e) {
-          grunt.log.error(e);
-          grunt.fail.warn('JST "' + filepath + '" failed to compile.');
+        if( options.multiple ) {
+            var cheerio = require('cheerio');
+            var $ = cheerio.load(src);
+            compiled = [];
+            $('script[type="text/template"]').each(function(i,src){
+                var el = cheerio(src), id = el.attr('id');
+                if( !id ) {
+                  return;
+                }
+                try {
+                    compiled.push({id:id, content: _.template(el.text(), false, options.templateSettings).source });
+                } catch (e) {
+                    grunt.log.error(e);
+                    grunt.fail.warn('JST "' + filepath + '" failed to compile.');
+                }
+
+            });
+        }  else {
+          try {
+            compiled = _.template(src, false, options.templateSettings).source;
+          } catch (e) {
+            grunt.log.error(e);
+            grunt.fail.warn('JST "' + filepath + '" failed to compile.');
+          }
         }
 
         if (options.prettify) {
@@ -62,7 +86,14 @@ module.exports = function(grunt) {
         if (options.amd && options.namespace === false) {
           return 'return ' + compiled;
         }
-        return nsInfo.namespace+'['+JSON.stringify(filename)+'] = '+compiled+';';
+        if( options.multiple ) {
+            compiled = _.map(compiled, function(tpl) {
+                return nsInfo.namespace+'["'+tpl.id+'"]='+tpl.content+';';
+            });
+          return compiled.join('');
+        } else {
+          return nsInfo.namespace+'['+JSON.stringify(filename)+'] = '+compiled+';';
+        }
       });
 
       if (output.length < 1) {
@@ -77,7 +108,7 @@ module.exports = function(grunt) {
               output[index] = "  " + line;
             });
           }
-          output.unshift("define(function(){");
+          output.unshift("define("+ module_name + "function(){");
           if (options.namespace !== false) {
             // Namespace has not been explicitly set to false; the AMD
             // wrapper will return the object containing the template.

@@ -93,10 +93,10 @@ options: {
 ```
 
 #### amd
-Type: `boolean`
+Type: `boolean` or `string`
 Default: false
 
-Wraps the output file with an AMD define function and returns the compiled template namespace unless namespace has been explicitly set to false in which case the template function will be returned directly.
+Wraps the output file with an AMD define function and returns the compiled template namespace unless namespace has been explicitly set to false in which case the template function will be returned directly. If you indicate an string, it would be used as AMD module name.
 
 ```js
 define(function() {
@@ -111,6 +111,23 @@ options: {
   amd: true
 }
 ```
+
+Named module example:
+```js
+options: {
+  amd: 'my_module'
+}
+```
+
+```js
+// output:
+define('my_module', function() {
+    //...//
+    return this['[template namespace]'];
+});
+```
+
+
 
 #### processContent
 Type: `function`
@@ -127,6 +144,29 @@ options: {
   }
 }
 ```
+
+#### multiple
+Type: `boolean`
+Default: false
+
+This settings allows you to get multiple templates from each html files.
+It would add each tpl id to the namespace.
+
+```js
+options: {
+  multiple: true
+}
+```
+
+```html
+<script type="text/template" id="fisrt_tpl">
+// first tpl code here
+</script>
+<script type="text/template" id="second_tpl">
+// second tpl code here
+</script>
+```
+
 
 ### Usage Examples
 
