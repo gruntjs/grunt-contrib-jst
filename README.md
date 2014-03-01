@@ -1,4 +1,4 @@
-# grunt-contrib-jst v0.5.1 [![Build Status](https://travis-ci.org/gruntjs/grunt-contrib-jst.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-jst)
+# grunt-contrib-jst v0.6.0 [![Build Status](https://travis-ci.org/gruntjs/grunt-contrib-jst.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-jst)
 
 > Precompile Underscore templates to JST file.
 
@@ -51,8 +51,8 @@ This option accepts a function which takes one argument (the template filepath) 
 
 ```js
 options: {
-  processName: function(filename) {
-    return filename.toUpperCase();
+  processName: function(filepath) {
+    return filepath.toUpperCase();
   }
 }
 ```
@@ -165,4 +165,4 @@ Note that the `interpolate: /\{\{(.+?)\}\}/g` setting above is simply an example
 
 Task submitted by [Tim Branyen](http://tbranyen.com)
 
-*This file was generated on Sat Oct 19 2013 14:22:27.*
+*This file was generated on Sat Mar 01 2014 03:29:46.*
