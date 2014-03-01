@@ -112,6 +112,25 @@ options: {
 }
 ```
 
+#### commonjs
+Type: `boolean`
+Default: false
+
+Wraps the output file with a CommonJS module definiton.
+
+```js
+var retval = {};
+reval['some/path/ejs.html'] = /* ... */;
+module.exports = retval;
+```
+
+Example:
+```js
+options: {
+  commonjs: true
+}
+```
+
 #### processContent
 Type: `function`
 
