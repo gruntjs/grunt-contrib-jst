@@ -6,7 +6,7 @@ exports['jst'] = {
 
     var expect, result;
 
-    test.expect(10);
+    test.expect(11);
 
     expect = grunt.file.read("test/expected/jst.js");
     result = grunt.file.read("tmp/jst.js");
@@ -19,7 +19,7 @@ exports['jst'] = {
     expect = grunt.file.read("test/expected/ns_nested.js");
     result = grunt.file.read("tmp/ns_nested.js");
     test.equal(expect, result, "should define parts of nested namespaces");
-    
+
     expect = grunt.file.read("test/expected/ns_nested.js"); // same as previous test
     result = grunt.file.read("tmp/ns_nested_this.js");
     test.equal(expect, result, "should define parts of nested namespaces, ignoring this.");
@@ -47,6 +47,10 @@ exports['jst'] = {
     expect = grunt.file.read("test/expected/local_scope.js");
     result = grunt.file.read("tmp/local_scope.js");
     test.equal(expect, result, "should add `with` block when templateSettings.variable is undefined");
+
+    expect = grunt.file.read("test/expected/without_extension.js");
+    result = grunt.file.read("tmp/without_extension.js");
+    test.equal(expect, result, "should exclude templae filename extension");
 
     test.done();
   }

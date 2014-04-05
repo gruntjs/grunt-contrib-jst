@@ -135,6 +135,14 @@ module.exports = function(grunt) {
         files: {
           "tmp/local_scope.js": ["test/fixtures/template_local_scope.html"]
         }
+      },
+      without_extension: {
+        options: {
+          noExt: true
+        },
+        files: {
+          "tmp/without_extension.js": ["test/fixtures/without_extension.html"]
+        }
       }
     },
 
