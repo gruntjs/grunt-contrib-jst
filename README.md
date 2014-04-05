@@ -128,6 +128,19 @@ options: {
 }
 ```
 
+#### noExt
+Type: `boolean`
+Default: false
+
+Compiles templates without extensions so you can access them like `path/to/my/template`
+
+Example:
+```js
+options: {
+  noExt: true
+}
+```
+
 ### Usage Examples
 
 ```js

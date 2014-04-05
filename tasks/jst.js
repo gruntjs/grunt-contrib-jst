@@ -12,13 +12,27 @@ var chalk = require('chalk');
 
 module.exports = function(grunt) {
   // filename conversion for templates
-  var defaultProcessName = function(name) { return name; };
+  var defaultProcessName = function(name, noExt) { 
+    var parts, basename, basenameParts;
+
+    if (noExt) {
+      parts = name.split('/'),
+      basename = parts[parts.length - 1],
+      basenameParts = basename.split('.');
+      parts[parts.length - 1] = basenameParts[0];
+
+      return parts.join('/'); 
+    }
+
+    return name;
+  };
 
   grunt.registerMultiTask('jst', 'Compile underscore templates to JST file', function() {
     var lf = grunt.util.linefeed;
     var helpers = require('grunt-lib-contrib').init(grunt);
     var options = this.options({
       namespace: 'JST',
+      noExt: false,
       templateSettings: {},
       processContent: function (src) { return src; },
       separator: lf + lf
@@ -56,11 +70,13 @@ module.exports = function(grunt) {
         if (options.prettify) {
           compiled = compiled.replace(/\n/g, '');
         }
-        filename = processName(filepath);
+
+        filename = processName(filepath, options.noExt);
 
         if (options.amd && options.namespace === false) {
           return 'return ' + compiled;
         }
+
         return nsInfo.namespace+'['+JSON.stringify(filename)+'] = '+compiled+';';
       });
 
