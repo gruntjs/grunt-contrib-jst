@@ -84,6 +84,18 @@ module.exports = function(grunt) {
           }
           output.push("});");
         }
+        else if (options.commonjs) {
+          if (options.prettify) {
+            output.forEach(function(line, index) {
+              output[index] = "  " + line;
+            });
+          }       
+          if (options.namespace !== false) {
+            // Namespace has not been explicitly set to false; the commonjs
+            // wrapper will return the object containing the template.
+            output.push("module.exports = " + nsInfo.namespace + ";");
+          }
+        }
         grunt.file.write(f.dest, output.join(grunt.util.normalizelf(options.separator)));
         grunt.log.writeln('File ' + chalk.cyan(f.dest) + ' created.');
       }
