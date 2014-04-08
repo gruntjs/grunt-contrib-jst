@@ -61,6 +61,9 @@ module.exports = function(grunt) {
         if (options.amd && options.namespace === false) {
           return 'return ' + compiled;
         }
+        else if (options.commonjs && options.namespace === false){
+          return 'module.exports = ' + compiled;
+        }
         return nsInfo.namespace+'['+JSON.stringify(filename)+'] = '+compiled+';';
       });
 
@@ -87,9 +90,9 @@ module.exports = function(grunt) {
         else if (options.commonjs) {
           if (options.prettify) {
             output.forEach(function(line, index) {
-              output[index] = "  " + line;
+              output[index] = line;
             });
-          }       
+          }                 
           if (options.namespace !== false) {
             // Namespace has not been explicitly set to false; the commonjs
             // wrapper will return the object containing the template.

@@ -6,7 +6,7 @@ exports['jst'] = {
 
     var expect, result;
 
-    test.expect(10);
+    test.expect(13);
 
     expect = grunt.file.read("test/expected/jst.js");
     result = grunt.file.read("tmp/jst.js");
@@ -55,6 +55,10 @@ exports['jst'] = {
     expect = grunt.file.read("test/expected/commonjs_wrapper_no_ns.js");
     result = grunt.file.read("tmp/commonjs_wrapper_no_ns.js");
     test.equal(expect, result, "should export the templates using the CommonJS pattern and return the function itself with no namespace");
+
+    expect = grunt.file.read("test/expected/pretty_commonjs.js");
+    result = grunt.file.read("tmp/pretty_commonjs.js");
+    test.equal(expect, result, "should make the CommonJS wrapper output pretty");
 
     test.done();
   }

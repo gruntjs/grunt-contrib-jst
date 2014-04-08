@@ -52,6 +52,18 @@ module.exports = function(grunt) {
           "tmp/pretty_amd.js": ["test/fixtures/template.html"]
         }
       },
+      pretty_commonjs: {
+        options: {
+          templateSettings: {
+            variable: 'obj'
+          },
+          prettify: true,
+          commonjs: true
+        },
+        files: {
+          "tmp/pretty_commonjs.js": ["test/fixtures/template.html"]
+        }
+      },
       prettify: {
         options: {
           templateSettings: {
