@@ -48,6 +48,14 @@ exports['jst'] = {
     result = grunt.file.read("tmp/local_scope.js");
     test.equal(expect, result, "should add `with` block when templateSettings.variable is undefined");
 
+    expect = grunt.file.read("test/expected/commonjs_wrapper.js"); 
+    result = grunt.file.read("tmp/commonjs_wrapper.js");
+    test.equal(expect, result, "should export the templates using the CommonJS pattern");
+    
+    expect = grunt.file.read("test/expected/commonjs_wrapper_no_ns.js");
+    result = grunt.file.read("tmp/commonjs_wrapper_no_ns.js");
+    test.equal(expect, result, "should export the templates using the CommonJS pattern and return the function itself with no namespace");
+
     test.done();
   }
 };
