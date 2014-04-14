@@ -128,6 +128,44 @@ options: {
 }
 ```
 
+#### prepend
+Type: `function` or `string`
+
+The variables declared before compiling templates, which will be prepend
+to the generated template files. It is usefull when one just need the `_.template()`
+method but don't want to use the whole underscore or lodash lib. If the option `prettify`
+is `true` then all whitespaces in the prepend string will be removed.
+
+```js
+jst: {
+  prepend: function() {
+    var vars = function() {
+      var _ = {};
+
+      _.escape = function() {
+        var escapeMap = {
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#x27;'
+        };
+        var escapeRegexe = new RegExp('[' + Object.keys(escapeMap).join('') + ']', 'g');
+
+        if (string == null) return '';
+        return ('' + string).replace(escapeRegexe, function(match) {
+            return escapeMap[match];
+        });
+      };
+    };
+
+    var entire = vars.toString();
+
+    return entire.slice(entire.indexOf('{') + 1, entire.lastIndexOf('}'));
+  }
+}
+```
+
 ### Usage Examples
 
 ```js
