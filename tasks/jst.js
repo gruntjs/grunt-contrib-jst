@@ -7,7 +7,7 @@
  */
 
 'use strict';
-var _ = require('lodash');
+var _ = require('underscore');
 var chalk = require('chalk');
 
 module.exports = function(grunt) {
