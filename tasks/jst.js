@@ -7,7 +7,7 @@
  */
 
 'use strict';
-var _ = require('underscore');
+var _ = require('lodash');
 var chalk = require('chalk');
 
 module.exports = function(grunt) {
@@ -69,6 +69,15 @@ module.exports = function(grunt) {
       } else {
         if (options.namespace !== false) {
           output.unshift(nsInfo.declaration);
+        }
+        if(options.prepend) {
+          var prepend = options.prepend;
+
+          if(typeof prepend === 'function') prepend = prepend();
+
+          if(options.prettify) prepend = prepend.replace(/(^\s+|\s+$)/gm, '');
+
+          output.unshift(prepend);
         }
         if (options.amd) {
           if (options.prettify) {
