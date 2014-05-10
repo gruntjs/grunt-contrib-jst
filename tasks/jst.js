@@ -19,6 +19,7 @@ module.exports = function(grunt) {
     var helpers = require('grunt-lib-contrib').init(grunt);
     var options = this.options({
       namespace: 'JST',
+      moduleName: '',
       templateSettings: {},
       processContent: function (src) { return src; },
       separator: lf + lf
@@ -76,7 +77,7 @@ module.exports = function(grunt) {
               output[index] = "  " + line;
             });
           }
-          output.unshift("define(function(){");
+          output.unshift("define('" + options.moduleName + "', function(){");
           if (options.namespace !== false) {
             // Namespace has not been explicitly set to false; the AMD
             // wrapper will return the object containing the template.
