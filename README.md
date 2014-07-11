@@ -1,4 +1,4 @@
-# grunt-contrib-jst v0.6.0 [![Build Status](https://travis-ci.org/gruntjs/grunt-contrib-jst.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-jst)
+# grunt-contrib-jst v0.7.0-pre [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-jst.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-jst)
 
 > Precompile Underscore templates to JST file.
 
@@ -149,6 +149,7 @@ Note that the `interpolate: /\{\{(.+?)\}\}/g` setting above is simply an example
 
 ## Release History
 
+ * 2014-02-28   v0.6.0   Bug fixes and dependency updates. Adds color log.
  * 2013-07-14   v0.5.1   Display filepath when fails to compile.
  * 2013-03-06   v0.5.0   When `namespace` is false and `amd` is true, return templates directly from AMD wrapper. Rename `amdwrapper` option to `amd` to match grunt-contrib-handlebars.
  * 2013-02-15   v0.4.1   First official release for Grunt 0.4.0.
@@ -165,4 +166,4 @@ Note that the `interpolate: /\{\{(.+?)\}\}/g` setting above is simply an example
 
 Task submitted by [Tim Branyen](http://tbranyen.com)
 
-*This file was generated on Sat Mar 01 2014 03:29:46.*
+*This file was generated on Fri Jul 11 2014 10:15:42.*
