@@ -76,11 +76,29 @@ module.exports = function(grunt) {
               output[index] = "  " + line;
             });
           }
-          output.unshift("define(function(){");
+          if (typeof options.amd === "boolean") {
+            output.unshift("define(['underscore'], function(_) {");
+          } else if (typeof options.amd === 'string') {
+            output.unshift("define(['" + options.amd + "'], function(_) {");
+          } else if (Array.isArray(options.amd)) {
+            // convert options.amd to a string of dependencies for require([...])
+            var dependenciesString = '';
+            for (var i = 0; i < options.amd.length; i++) {
+              if (i !== 0) {
+                dependenciesString += ', ';
+              }
+
+              dependenciesString += "'" + options.amd[i] + "'";
+            }
+
+            // Wrap the file in an AMD define fn.
+            output.unshift("define([" + dependenciesString + "], function(_) {");
+          }
+
           if (options.namespace !== false) {
             // Namespace has not been explicitly set to false; the AMD
             // wrapper will return the object containing the template.
-            output.push("  return " + nsInfo.namespace + ";");
+            output.push((options.prettify ? "  " : '') + "return " + nsInfo.namespace + ";");
           }
           output.push("});");
         }
