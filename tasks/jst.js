@@ -89,7 +89,7 @@ module.exports = function(grunt) {
           }
           output.push("});");
         }
-        grunt.file.write(f.dest, output.join(grunt.util.normalizelf(options.separator)));
+        grunt.file.write(f.dest, grunt.util.normalizelf(output.join(options.separator)));
         grunt.log.writeln('File ' + chalk.cyan(f.dest) + ' created.');
       }
     });
