@@ -19,6 +19,8 @@ module.exports = function(grunt) {
     var lib = require('./lib/jst');
     var options = this.options({
       namespace: 'JST',
+      banner: '',
+      footer: '',
       templateSettings: {},
       processContent: function (src) { return src; },
       separator: lf + lf
@@ -31,6 +33,10 @@ module.exports = function(grunt) {
     if (options.namespace !== false) {
       nsInfo = lib.getNamespaceDeclaration(options.namespace);
     }
+
+    // Process banner and footer.
+    var banner = grunt.template.process(options.banner);
+    var footer = grunt.template.process(options.footer);
 
     this.files.forEach(function(f) {
       var output = f.src.filter(function(filepath) {
@@ -83,7 +89,13 @@ module.exports = function(grunt) {
           }
           output.push("});");
         }
-        grunt.file.write(f.dest, output.join(grunt.util.normalizelf(options.separator)));
+        if(banner !== ''){  
+          output.unshift(banner);
+        }
+        if(footer !== ''){
+          output.push(footer);
+        }
+        grunt.file.write(f.dest, output.join(grunt.util.normalizelf(options.separator)), footer);
         grunt.log.writeln('File ' + chalk.cyan(f.dest) + ' created.');
       }
     });

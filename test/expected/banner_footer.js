@@ -1,4 +1,5 @@
 /* banner test */
+
 this["JST"] = this["JST"] || {};
 
 this["JST"]["test/fixtures/template.html"] = function(obj) {
@@ -8,4 +9,5 @@ __p += '<head><title>' +
 '</title></head>';
 return __p
 };
+
 /* footer test */
