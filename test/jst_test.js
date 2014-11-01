@@ -6,7 +6,7 @@ exports['jst'] = {
 
     var expect, result;
 
-    test.expect(10);
+    test.expect(12);
 
     expect = grunt.file.read("test/expected/jst.js");
     result = grunt.file.read("tmp/jst.js");
@@ -15,6 +15,14 @@ exports['jst'] = {
     expect = grunt.file.read("test/expected/uglyfile.js");
     result = grunt.file.read("tmp/uglyfile.js");
     test.equal(expect, result, "should escape single quotes in filenames");
+
+    expect = grunt.file.read("test/expected/banner_footer.js");
+    result = grunt.file.read("tmp/banner_footer.js");
+    test.equal(expect, result, "should add a banner and footer");
+
+    expect = grunt.file.read("test/expected/ns_false.js");
+    result = grunt.file.read("tmp/ns_false.js");
+    test.equal(expect, result, "should compile without namespace");
 
     expect = grunt.file.read("test/expected/ns_nested.js");
     result = grunt.file.read("tmp/ns_nested.js");

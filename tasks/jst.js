@@ -19,6 +19,8 @@ module.exports = function(grunt) {
     var lib = require('./lib/jst');
     var options = this.options({
       namespace: 'JST',
+      banner: '',
+      footer: '',
       templateSettings: {},
       processContent: function (src) { return src; },
       separator: lf + lf
@@ -32,6 +34,10 @@ module.exports = function(grunt) {
       nsInfo = lib.getNamespaceDeclaration(options.namespace);
     }
 
+    // Process banner and footer.
+    var banner = grunt.template.process(options.banner);
+    var footer = grunt.template.process(options.footer);
+
     this.files.forEach(function(f) {
       var output = f.src.filter(function(filepath) {
         // Warn on and remove invalid source files (if nonull was set).
@@ -41,10 +47,9 @@ module.exports = function(grunt) {
         } else {
           return true;
         }
-      })
-      .map(function(filepath) {
+      }).map(function(filepath) {
         var src = options.processContent(grunt.file.read(filepath));
-        var compiled, filename;
+        var compiled, filename, namespace = options.namespace === false ? 'this' : nsInfo.namespace;
 
         try {
           compiled = _.template(src, false, options.templateSettings).source;
@@ -61,7 +66,7 @@ module.exports = function(grunt) {
         if (options.amd && options.namespace === false) {
           return 'return ' + compiled;
         }
-        return nsInfo.namespace+'['+JSON.stringify(filename)+'] = '+compiled+';';
+        return namespace +'['+JSON.stringify(filename)+'] = '+compiled+';';
       });
 
       if (output.length < 1) {
@@ -84,7 +89,13 @@ module.exports = function(grunt) {
           }
           output.push("});");
         }
-        grunt.file.write(f.dest, output.join(grunt.util.normalizelf(options.separator)));
+        if(banner !== ''){  
+          output.unshift(banner);
+        }
+        if(footer !== ''){
+          output.push(footer);
+        }
+        grunt.file.write(f.dest, output.join(grunt.util.normalizelf(options.separator)), footer);
         grunt.log.writeln('File ' + chalk.cyan(f.dest) + ' created.');
       }
     });
