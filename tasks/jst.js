@@ -41,8 +41,7 @@ module.exports = function(grunt) {
         } else {
           return true;
         }
-      })
-      .map(function(filepath) {
+      }).map(function(filepath) {
         var src = options.processContent(grunt.file.read(filepath));
         var compiled, filename, namespace = options.namespace === false ? 'this' : nsInfo.namespace;
 

@@ -96,6 +96,18 @@ module.exports = function(grunt) {
           "tmp/uglyfile.js": ["test/fixtures/*bad-filename*"]
         }
       },
+      banner_footer: {
+        options: {
+          banner: '/* banner test */',
+          footer: '/* footer test */',
+          templateSettings: {
+            variable: 'obj'
+          },
+        },
+        files: {
+          "tmp/banner_footer.js": ["test/fixtures/template.html"]
+        }
+      },
       ns_false: {
         options: {
           templateSettings: {
