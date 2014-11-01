@@ -96,6 +96,17 @@ module.exports = function(grunt) {
           "tmp/uglyfile.js": ["test/fixtures/*bad-filename*"]
         }
       },
+      ns_false: {
+        options: {
+          templateSettings: {
+            variable: 'obj'
+          },
+          namespace: false
+        },
+        files: {
+          "tmp/ns_false.js": ["test/fixtures/template.html"]
+        }
+      },
       ns_nested: {
         options: {
           templateSettings: {
