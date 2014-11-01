@@ -44,7 +44,7 @@ module.exports = function(grunt) {
       })
       .map(function(filepath) {
         var src = options.processContent(grunt.file.read(filepath));
-        var compiled, filename;
+        var compiled, filename, namespace = options.namespace === false ? 'this' : nsInfo.namespace;
 
         try {
           compiled = _.template(src, false, options.templateSettings).source;
@@ -61,7 +61,7 @@ module.exports = function(grunt) {
         if (options.amd && options.namespace === false) {
           return 'return ' + compiled;
         }
-        return nsInfo.namespace+'['+JSON.stringify(filename)+'] = '+compiled+';';
+        return namespace +'['+JSON.stringify(filename)+'] = '+compiled+';';
       });
 
       if (output.length < 1) {
