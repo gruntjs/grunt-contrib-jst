@@ -68,7 +68,7 @@ Default: false
 Wraps the output file with an AMD define function and returns the compiled template namespace unless namespace has been explicitly set to false in which case the template function will be returned directly.
 
 ```js
-define(function() {
+define(['underscore'], function(_){
     //...//
     return this['[template namespace]'];
 });

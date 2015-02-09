@@ -1,4 +1,4 @@
-define(function(){
+define(['underscore'], function(_){
 
 return function(obj) {
 var __t, __p = '', __e = _.escape;
