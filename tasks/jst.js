@@ -70,6 +70,15 @@ module.exports = function(grunt) {
         if (options.namespace !== false) {
           output.unshift(nsInfo.declaration);
         }
+        if(options.prepend) {
+          var prepend = options.prepend;
+
+          if(typeof prepend === 'function') prepend = prepend();
+
+          if(options.prettify) prepend = prepend.replace(/(^\s+|\s+$)/gm, '');
+
+          output.unshift(prepend);
+        }
         if (options.amd) {
           if (options.prettify) {
             output.forEach(function(line, index) {
