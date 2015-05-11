@@ -62,12 +62,8 @@ module.exports = function(grunt) {
         if ((options.amd || options.commonjs) && options.namespace === false) {
           return 'return ' + compiled;
         }
-          
-        if (options.commonjs === true) {
-          templates.push(compiled + ';');
-        } else {
-          return nsInfo.namespace+'['+JSON.stringify(filename)+'] = '+compiled+';';
-        }
+
+        return nsInfo.namespace+'['+JSON.stringify(filename)+'] = '+compiled+';';
       });
 
       if (output.length < 1) {
@@ -90,16 +86,16 @@ module.exports = function(grunt) {
           }
           output.push("});");
         }
-        
+
         if (options.commonjs) {
-          if (useNamespace) {
+          if (options.namespace !== false) {
             output.push('return ' + nsInfo.namespace + ';');
           }
           // Export the templates object for CommonJS environments.
           output.unshift('module.exports = function() {');
           output.push('};');
         }
-        
+
         grunt.file.write(f.dest, output.join(grunt.util.normalizelf(options.separator)));
         grunt.log.writeln('File ' + chalk.cyan(f.dest) + ' created.');
       }

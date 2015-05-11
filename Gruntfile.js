@@ -86,6 +86,29 @@ module.exports = function(grunt) {
           "tmp/amd_wrapper_no_ns.js": ["test/fixtures/template.html"]
         }
       },
+      commonjs_wrapper: {
+        options: {
+          templateSettings: {
+            variable: 'obj'
+          },
+          commonjs:true
+        },
+        files: {
+          "tmp/commonjs_wrapper.js": ["test/fixtures/template.html"]
+        }
+      },
+      commonjs_wrapper_no_ns: {
+        options: {
+          templateSettings: {
+            variable: 'obj'
+          },
+          commonjs:true,
+          namespace:false
+        },
+        files: {
+          "tmp/commonjs_wrapper_no_ns.js": ["test/fixtures/template.html"]
+        }
+      },
       uglyfile: {
         options: {
           templateSettings: {
