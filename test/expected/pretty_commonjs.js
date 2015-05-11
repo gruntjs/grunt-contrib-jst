@@ -1,4 +1,4 @@
-module.exports = function() {
+module.exports = function(_) {
 
 this["JST"] = this["JST"] || {};
 
