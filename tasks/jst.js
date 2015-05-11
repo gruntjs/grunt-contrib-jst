@@ -92,7 +92,7 @@ module.exports = function(grunt) {
             output.push('return ' + nsInfo.namespace + ';');
           }
           // Export the templates object for CommonJS environments.
-          output.unshift('module.exports = {');
+          output.unshift('module.exports = function() {');
           output.push('};');
         }
 
