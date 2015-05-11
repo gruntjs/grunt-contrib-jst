@@ -112,6 +112,26 @@ options: {
 }
 ```
 
+#### commonjs
+Type: `Boolean`
+Default: `false`
+
+Wraps the output file in a CommonJS module function, exporting the compiled templates. It will also add templates to the template namespace, unless `namespace` is explicitly set to `false`.
+
+```js
+module.exports = function(_) {
+    //...//
+    return this['[template namespace]'];
+};
+```
+
+When requiring the module in a CommonJS environment, pass in your underscore `_` object.
+
+```js
+var Handlebars = require('underscore');
+var templates = require('./templates')(_);
+```
+
 #### processContent
 Type: `function`
 
