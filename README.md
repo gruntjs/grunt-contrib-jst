@@ -128,7 +128,7 @@ module.exports = function(_) {
 When requiring the module in a CommonJS environment, pass in your underscore `_` object.
 
 ```js
-var Handlebars = require('underscore');
+var _ = require('underscore');
 var templates = require('./templates')(_);
 ```
 
