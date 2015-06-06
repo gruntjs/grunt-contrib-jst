@@ -1,4 +1,4 @@
-define(function(){
+define(['underscore'], function(_) {
 
 this["JST"] = this["JST"] || {};
 
@@ -10,6 +10,6 @@ __p += '<head><title>' +
 return __p
 };
 
-  return this["JST"];
+return this["JST"];
 
 });

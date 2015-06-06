@@ -93,23 +93,44 @@ options: {
 ```
 
 #### amd
-Type: `boolean`
-Default: false
+Type: `boolean` or `String`
+Default: `false`
 
 Wraps the output file with an AMD define function and returns the compiled template namespace unless namespace has been explicitly set to false in which case the template function will be returned directly.
 
-```js
-define(function() {
-    //...//
-    return this['[template namespace]'];
-});
-```
+If `true` then the module name `'underscore'` will be uesed as first dependence of the AMD module.
+
+If `String` then you can provide a custom module name to be used as the first dependence.
+
+And the first dependence is expected to be underscore.js or underscore-compatible lib like [lodash.js](https://lodash.com/), in fact, grunt-contrib-jst just use lodash.js to pre-compile templates.
 
 Example:
 ```js
 options: {
   amd: true
 }
+```
+
+will output:
+```js
+define(['underscore'], function(_) {
+  //...//
+  return this['[template namespace]'];
+});
+```
+
+```js
+options: {
+  amd: 'lodash'
+}
+```
+
+will output:
+```js
+define(['lodash'], function(_) {
+  //...//
+  return this['[template namespace]'];
+});
 ```
 
 #### processContent
@@ -166,4 +187,4 @@ Note that the `interpolate: /\{\{(.+?)\}\}/g` setting above is simply an example
 
 Task submitted by [Tim Branyen](http://tbranyen.com)
 
-*This file was generated on Fri Jul 11 2014 10:15:42.*
+*This file was generated on Fri Oct 17 2014 00:37:23.*

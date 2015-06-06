@@ -76,15 +76,20 @@ module.exports = function(grunt) {
               output[index] = "  " + line;
             });
           }
-          output.unshift("define(function(){");
+          if (typeof options.amd === "boolean") {
+            output.unshift("define(['underscore'], function(_) {");
+          } else if (typeof options.amd === 'string') {
+            output.unshift("define(['" + options.amd + "'], function(_) {");
+          }
+
           if (options.namespace !== false) {
             // Namespace has not been explicitly set to false; the AMD
             // wrapper will return the object containing the template.
-            output.push("  return " + nsInfo.namespace + ";");
+            output.push((options.prettify ? "  " : '') + "return " + nsInfo.namespace + ";");
           }
           output.push("});");
         }
-        grunt.file.write(f.dest, output.join(grunt.util.normalizelf(options.separator)));
+        grunt.file.write(f.dest, grunt.util.normalizelf(output.join(options.separator)));
         grunt.log.writeln('File ' + chalk.cyan(f.dest) + ' created.');
       }
     });
