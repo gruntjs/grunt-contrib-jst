@@ -43,7 +43,7 @@ module.exports = function(grunt) {
         }
       })
       .map(function(filepath) {
-        var src = options.processContent(grunt.file.read(filepath));
+        var src = options.processContent(grunt.file.read(filepath), filepath);
         var compiled, filename;
 
         try {
