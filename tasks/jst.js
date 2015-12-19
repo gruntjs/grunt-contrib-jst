@@ -16,7 +16,8 @@ module.exports = function(grunt) {
 
   grunt.registerMultiTask('jst', 'Compile underscore templates to JST file', function() {
     var lf = grunt.util.linefeed;
-    var lib = require('./lib/jst');
+    var declare = require('nsdeclare');
+
     var options = this.options({
       namespace: 'JST',
       templateSettings: {},
@@ -29,7 +30,11 @@ module.exports = function(grunt) {
 
     var nsInfo;
     if (options.namespace !== false) {
-      nsInfo = lib.getNamespaceDeclaration(options.namespace);
+      var declareOptions = {
+        root: typeof window === 'undefined':'global':'this',
+        response: 'details'
+      }
+      nsInfo = declare(options.namespace, declareOptions);
     }
 
     this.files.forEach(function(f) {
