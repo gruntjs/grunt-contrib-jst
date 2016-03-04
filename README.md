@@ -1,11 +1,10 @@
-# grunt-contrib-jst v0.7.0-pre [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-jst.png?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-jst)
+# grunt-contrib-jst v1.0.0 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-jst.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-jst)
 
-> Precompile Underscore templates to JST file.
+> Precompile Underscore templates to JST file
 
 
 
 ## Getting Started
-This plugin requires Grunt `~0.4.0`
 
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
@@ -32,20 +31,20 @@ _This plugin uses [the Lo-Dash library](http://lodash.com/) to generate JavaScri
 ### Options
 
 #### separator
-Type: `String`
+Type: `String`  
 Default: linefeed + linefeed
 
 Concatenated files will be joined on this string.
 
 #### namespace
-Type: `String`
-Default: 'JST'
+Type: `String`  
+Default: `'JST'`
 
 The namespace in which the precompiled templates will be assigned. Use dot notation (e.g. App.Templates) for nested namespaces or false for no namespace wrapping. When false with amd option set true, templates will be returned directly from the AMD wrapper.
 
 #### processName
-Type: `function`
-Default: null
+Type: `function`  
+Default: `null`
 
 This option accepts a function which takes one argument (the template filepath) and returns a string which will be used as the key for the precompiled template object.  The example below stores all templates on the default JST namespace in capital letters.
 
@@ -58,8 +57,8 @@ options: {
 ```
 
 #### templateSettings
-Type: `Object`
-Default: null
+Type: `Object`  
+Default: `null`
 
 The settings passed to underscore when compiling templates.
 
@@ -79,8 +78,8 @@ jst: {
 ```
 
 #### prettify
-Type: `boolean`
-Default: false
+Type: `boolean`  
+Default: `false`
 
 When doing a quick once-over of your compiled template file, it's nice to see
 an easy-to-read format that has one line per template. This will accomplish
@@ -93,8 +92,8 @@ options: {
 ```
 
 #### amd
-Type: `boolean`
-Default: false
+Type: `boolean`  
+Default: `false`
 
 Wraps the output file with an AMD define function and returns the compiled template namespace unless namespace has been explicitly set to false in which case the template function will be returned directly.
 
@@ -149,6 +148,7 @@ Note that the `interpolate: /\{\{(.+?)\}\}/g` setting above is simply an example
 
 ## Release History
 
+ * 2016-03-04   v1.0.0   Bug fixes and dependency updates. Remove peerDeps and other fixes.
  * 2014-02-28   v0.6.0   Bug fixes and dependency updates. Adds color log.
  * 2013-07-14   v0.5.1   Display filepath when fails to compile.
  * 2013-03-06   v0.5.0   When `namespace` is false and `amd` is true, return templates directly from AMD wrapper. Rename `amdwrapper` option to `amd` to match grunt-contrib-handlebars.
@@ -166,4 +166,4 @@ Note that the `interpolate: /\{\{(.+?)\}\}/g` setting above is simply an example
 
 Task submitted by [Tim Branyen](http://tbranyen.com)
 
-*This file was generated on Fri Jul 11 2014 10:15:42.*
+*This file was generated on Fri Mar 04 2016 17:18:07.*
