@@ -19,6 +19,7 @@ module.exports = function(grunt) {
     var lib = require('./lib/jst');
     var options = this.options({
       namespace: 'JST',
+      commonjs: false,
       templateSettings: {},
       processContent: function (src) { return src; },
       separator: lf + lf
@@ -58,9 +59,10 @@ module.exports = function(grunt) {
         }
         filename = processName(filepath);
 
-        if (options.amd && options.namespace === false) {
+        if ((options.amd || options.commonjs) && options.namespace === false) {
           return 'return ' + compiled;
         }
+
         return nsInfo.namespace+'['+JSON.stringify(filename)+'] = '+compiled+';';
       });
 
@@ -84,6 +86,16 @@ module.exports = function(grunt) {
           }
           output.push("});");
         }
+
+        if (options.commonjs) {
+          if (options.namespace !== false) {
+            output.push('return ' + nsInfo.namespace + ';');
+          }
+          // Export the templates object for CommonJS environments.
+          output.unshift('module.exports = function(_) {');
+          output.push('};');
+        }
+
         grunt.file.write(f.dest, output.join(grunt.util.normalizelf(options.separator)));
         grunt.log.writeln('File ' + chalk.cyan(f.dest) + ' created.');
       }
