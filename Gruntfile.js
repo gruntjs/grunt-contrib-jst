@@ -52,6 +52,18 @@ module.exports = function(grunt) {
           "tmp/pretty_amd.js": ["test/fixtures/template.html"]
         }
       },
+      pretty_commonjs: {
+        options: {
+          templateSettings: {
+            variable: 'obj'
+          },
+          prettify: true,
+          commonjs: true
+        },
+        files: {
+          "tmp/pretty_commonjs.js": ["test/fixtures/template.html"]
+        }
+      },
       prettify: {
         options: {
           templateSettings: {
@@ -84,6 +96,29 @@ module.exports = function(grunt) {
         },
         files: {
           "tmp/amd_wrapper_no_ns.js": ["test/fixtures/template.html"]
+        }
+      },
+      commonjs_wrapper: {
+        options: {
+          templateSettings: {
+            variable: 'obj'
+          },
+          commonjs:true
+        },
+        files: {
+          "tmp/commonjs_wrapper.js": ["test/fixtures/template.html"]
+        }
+      },
+      commonjs_wrapper_no_ns: {
+        options: {
+          templateSettings: {
+            variable: 'obj'
+          },
+          commonjs:true,
+          namespace:false
+        },
+        files: {
+          "tmp/commonjs_wrapper_no_ns.js": ["test/fixtures/template.html"]
         }
       },
       uglyfile: {

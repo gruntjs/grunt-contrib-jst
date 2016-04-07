@@ -111,6 +111,24 @@ options: {
 }
 ```
 
+#### commonjs
+Type: `boolean`
+Default: false
+
+Exports the compiled templates using the CommonJS pattern for Node/Browserify and returns the compiled template namespace unless namespace has been explicitly set to false in which case the template function will be returned directly.
+
+```js
+//...//
+module.exports = this['[template namespace]'];
+```
+
+Example:
+```js
+options: {
+  commonjs: true
+}
+```
+
 #### processContent
 Type: `function`
 

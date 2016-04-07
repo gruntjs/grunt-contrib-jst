@@ -81,6 +81,24 @@ options: {
 }
 ```
 
+## commonjs
+Type: `boolean`
+Default: false
+
+Exports the template using CommonJS pattern, for Node and Browserify use
+
+```js
+//...//
+module.exports = this['[template namespace]'];
+```
+
+Example:
+```js
+options: {
+  commonjs: true
+}
+```
+
 ## processContent
 Type: `function`
 
