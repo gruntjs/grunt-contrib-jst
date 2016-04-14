@@ -1,1 +1,3 @@
 * text=auto
+/test/expected/* text eol=lf
+/test/fixtures/* text eol=lf
