@@ -37,11 +37,11 @@ jst: {
   compile: {
     options: {
       templateSettings: {
-        interpolate : /\{\{(.+?)\}\}/g
+        interpolate: /\{\{(.+?)\}\}/g
       }
     },
     files: {
-      "path/to/compiled/templates.js": ["path/to/source/**/*.html"]
+      'path/to/compiled/templates.js': ['path/to/source/**/*.html']
     }
   }
 }
@@ -69,8 +69,8 @@ Wraps the output file with an AMD define function and returns the compiled templ
 
 ```js
 define(function() {
-    //...//
-    return this['[template namespace]'];
+  //...//
+  return this['[template namespace]'];
 });
 ```
 

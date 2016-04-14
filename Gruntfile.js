@@ -37,7 +37,7 @@ module.exports = function(grunt) {
           }
         },
         files: {
-          "tmp/jst.js": ["test/fixtures/template.html"]
+          'tmp/jst.js': ['test/fixtures/template.html']
         }
       },
       pretty_amd: {
@@ -49,7 +49,7 @@ module.exports = function(grunt) {
           amd: true
         },
         files: {
-          "tmp/pretty_amd.js": ["test/fixtures/template.html"]
+          'tmp/pretty_amd.js': ['test/fixtures/template.html']
         }
       },
       prettify: {
@@ -60,7 +60,7 @@ module.exports = function(grunt) {
           prettify: true
         },
         files: {
-          "tmp/pretty.js": ["test/fixtures/template.html"]
+          'tmp/pretty.js': ['test/fixtures/template.html']
         }
       },
       amd_wrapper: {
@@ -71,7 +71,7 @@ module.exports = function(grunt) {
           amd:true
         },
         files: {
-          "tmp/amd_wrapper.js": ["test/fixtures/template.html"]
+          'tmp/amd_wrapper.js': ['test/fixtures/template.html']
         }
       },
       amd_wrapper_no_ns: {
@@ -79,21 +79,21 @@ module.exports = function(grunt) {
           templateSettings: {
             variable: 'obj'
           },
-          amd:true,
-          namespace:false
+          amd: true,
+          namespace: false
         },
         files: {
-          "tmp/amd_wrapper_no_ns.js": ["test/fixtures/template.html"]
+          'tmp/amd_wrapper_no_ns.js': ['test/fixtures/template.html']
         }
       },
       uglyfile: {
         options: {
           templateSettings: {
             variable: 'obj'
-          },
+          }
         },
         files: {
-          "tmp/uglyfile.js": ["test/fixtures/*bad-filename*"]
+          'tmp/uglyfile.js': ['test/fixtures/*bad-filename*']
         }
       },
       ns_nested: {
@@ -101,10 +101,10 @@ module.exports = function(grunt) {
           templateSettings: {
             variable: 'obj'
           },
-          namespace: "MyApp.JST.Main"
+          namespace: 'MyApp.JST.Main'
         },
         files: {
-          "tmp/ns_nested.js": ["test/fixtures/template.html"]
+          'tmp/ns_nested.js': ['test/fixtures/template.html']
         }
       },
       ns_nested_this: {
@@ -112,10 +112,10 @@ module.exports = function(grunt) {
           templateSettings: {
             variable: 'obj'
           },
-          namespace: "this.MyApp.JST.Main"
+          namespace: 'this.MyApp.JST.Main'
         },
         files: {
-          "tmp/ns_nested_this.js": ["test/fixtures/template.html"]
+          'tmp/ns_nested_this.js': ['test/fixtures/template.html']
         }
       },
       process_content: {
@@ -128,12 +128,12 @@ module.exports = function(grunt) {
           }
         },
         files: {
-          "tmp/process_content.js": ["test/fixtures/indent_template.html"]
+          'tmp/process_content.js': ['test/fixtures/indent_template.html']
         }
       },
       local_scope: {
         files: {
-          "tmp/local_scope.js": ["test/fixtures/template_local_scope.html"]
+          'tmp/local_scope.js': ['test/fixtures/template_local_scope.html']
         }
       }
     },

@@ -7,6 +7,7 @@
  */
 
 'use strict';
+
 var _ = require('lodash');
 var chalk = require('chalk');
 
@@ -73,16 +74,16 @@ module.exports = function(grunt) {
         if (options.amd) {
           if (options.prettify) {
             output.forEach(function(line, index) {
-              output[index] = "  " + line;
+              output[index] = '  ' + line;
             });
           }
-          output.unshift("define(function(){");
+          output.unshift('define(function(){');
           if (options.namespace !== false) {
             // Namespace has not been explicitly set to false; the AMD
             // wrapper will return the object containing the template.
-            output.push("  return " + nsInfo.namespace + ";");
+            output.push('  return ' + nsInfo.namespace + ';');
           }
-          output.push("});");
+          output.push('});');
         }
         grunt.file.write(f.dest, output.join(grunt.util.normalizelf(options.separator)));
         grunt.log.writeln('File ' + chalk.cyan(f.dest) + ' created.');

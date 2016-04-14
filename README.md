@@ -1,4 +1,4 @@
-# grunt-contrib-jst v1.0.0 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-jst.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-jst)
+# grunt-contrib-jst v1.0.0 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-jst.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-jst) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/mxt7687c8r7bn7ab/branch/master?svg=true)](https://ci.appveyor.com/project/gruntjs/grunt-contrib-jst/branch/master)
 
 > Precompile Underscore templates to JST file
 
@@ -67,11 +67,11 @@ jst: {
   compile: {
     options: {
       templateSettings: {
-        interpolate : /\{\{(.+?)\}\}/g
+        interpolate: /\{\{(.+?)\}\}/g
       }
     },
     files: {
-      "path/to/compiled/templates.js": ["path/to/source/**/*.html"]
+      'path/to/compiled/templates.js': ['path/to/source/**/*.html']
     }
   }
 }
@@ -99,8 +99,8 @@ Wraps the output file with an AMD define function and returns the compiled templ
 
 ```js
 define(function() {
-    //...//
-    return this['[template namespace]'];
+  //...//
+  return this['[template namespace]'];
 });
 ```
 
@@ -134,11 +134,11 @@ jst: {
   compile: {
     options: {
       templateSettings: {
-        interpolate : /\{\{(.+?)\}\}/g
+        interpolate: /\{\{(.+?)\}\}/g
       }
     },
     files: {
-      "path/to/compiled/templates.js": ["path/to/source/**/*.html"]
+      'path/to/compiled/templates.js': ['path/to/source/**/*.html']
     }
   }
 }
@@ -166,4 +166,4 @@ Note that the `interpolate: /\{\{(.+?)\}\}/g` setting above is simply an example
 
 Task submitted by [Tim Branyen](http://tbranyen.com)
 
-*This file was generated on Fri Mar 04 2016 17:18:07.*
+*This file was generated on Thu Apr 14 2016 09:40:42.*

@@ -5,11 +5,11 @@ jst: {
   compile: {
     options: {
       templateSettings: {
-        interpolate : /\{\{(.+?)\}\}/g
+        interpolate: /\{\{(.+?)\}\}/g
       }
     },
     files: {
-      "path/to/compiled/templates.js": ["path/to/source/**/*.html"]
+      'path/to/compiled/templates.js': ['path/to/source/**/*.html']
     }
   }
 }
