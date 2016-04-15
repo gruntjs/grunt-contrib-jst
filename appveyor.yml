@@ -2,6 +2,9 @@ clone_depth: 10
 
 version: "{build}"
 
+init:
+  - git config --global core.autocrlf true
+
 # What combinations to test
 environment:
   matrix:
