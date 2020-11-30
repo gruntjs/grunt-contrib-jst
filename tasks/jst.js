@@ -48,7 +48,9 @@ module.exports = function(grunt) {
         var compiled, filename;
 
         try {
-          compiled = _.template(src, false, options.templateSettings).source;
+          // a breaking change in definition of '_.template()' from lodash v2.4.1 to v4.17.20
+          // modified a _.template() call here to match the latest
+          compiled = _.template(src, options.templateSettings).source;
         } catch (e) {
           grunt.log.error(e);
           grunt.fail.warn('JST ' + chalk.cyan(filepath) + ' failed to compile.');
