@@ -1,3 +1,8 @@
+v2.0.0:
+  date: 2020-12-03
+  changes:
+    - Bug fixes and dependency updates.
+    - Requires node.js 10+.
 v1.0.0:
   date: 2016-03-04
   changes:

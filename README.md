@@ -1,4 +1,4 @@
-# grunt-contrib-jst v1.0.0 [![Build Status: Linux](https://travis-ci.org/gruntjs/grunt-contrib-jst.svg?branch=master)](https://travis-ci.org/gruntjs/grunt-contrib-jst) [![Build Status: Windows](https://ci.appveyor.com/api/projects/status/mxt7687c8r7bn7ab/branch/master?svg=true)](https://ci.appveyor.com/project/gruntjs/grunt-contrib-jst/branch/master)
+# grunt-contrib-jst v2.0.0 [![Build Status](https://github.com/gruntjs/grunt-contrib-jst/workflows/Tests/badge.svg)](https://github.com/gruntjs/grunt-contrib-jst/actions?workflow=Tests)
 
 > Precompile Underscore templates to JST file
 
@@ -6,7 +6,7 @@
 
 ## Getting Started
 
-If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
+If you haven't used [Grunt](https://gruntjs.com/) before, be sure to check out the [Getting Started](https://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](https://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
 ```shell
 npm install grunt-contrib-jst --save-dev
@@ -148,6 +148,7 @@ Note that the `interpolate: /\{\{(.+?)\}\}/g` setting above is simply an example
 
 ## Release History
 
+ * 2020-12-03   v2.0.0   Bug fixes and dependency updates. Requires node.js 10+.
  * 2016-03-04   v1.0.0   Bug fixes and dependency updates. Remove peerDeps and other fixes.
  * 2014-02-28   v0.6.0   Bug fixes and dependency updates. Adds color log.
  * 2013-07-14   v0.5.1   Display filepath when fails to compile.
@@ -166,4 +167,4 @@ Note that the `interpolate: /\{\{(.+?)\}\}/g` setting above is simply an example
 
 Task submitted by [Tim Branyen](http://tbranyen.com)
 
-*This file was generated on Thu Apr 14 2016 09:40:42.*
+*This file was generated on Thu Dec 03 2020 21:52:20.*

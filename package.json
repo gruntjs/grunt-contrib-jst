@@ -1,7 +1,7 @@
 {
   "name": "grunt-contrib-jst",
   "description": "Precompile Underscore templates to JST file",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "author": {
     "name": "Grunt Team",
     "url": "http://gruntjs.com/"
@@ -9,22 +9,22 @@
   "repository": "gruntjs/grunt-contrib-jst",
   "license": "MIT",
   "engines": {
-    "node": ">=8"
+    "node": ">=10"
   },
   "main": "tasks/jst.js",
   "scripts": {
     "test": "grunt test"
   },
   "dependencies": {
-    "chalk": "^1.0.0",
+    "chalk": "^4.1.0",
     "lodash": "^4.17.20"
   },
   "devDependencies": {
-    "grunt": "^1.0.0",
-    "grunt-contrib-clean": "^1.0.0",
-    "grunt-contrib-internal": "^1.1.0",
-    "grunt-contrib-jshint": "^1.0.0",
-    "grunt-contrib-nodeunit": "^1.0.0"
+    "grunt": "^1.3.0",
+    "grunt-contrib-clean": "^2.0.0",
+    "grunt-contrib-internal": "^5.0.1",
+    "grunt-contrib-jshint": "^3.0.0",
+    "grunt-contrib-nodeunit": "^2.1.0"
   },
   "keywords": [
     "gruntplugin"
